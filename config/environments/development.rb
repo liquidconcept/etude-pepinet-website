@@ -12,7 +12,6 @@ EtudePepinet::Application.configure do
     Hirb.enable
   end
 
-
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -27,6 +26,9 @@ EtudePepinet::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
+
+  # Default host for urls in Action::Mailer
+  config.action_mailer.default_url_options = { host: 'website.etudepepinet.dev' }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

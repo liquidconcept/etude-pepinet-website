@@ -8,6 +8,10 @@ Spork.prefork do
   require 'simplecov'
   SimpleCov.start('rails') do
     add_filter 'vendor'
+
+    # ignore ActiveAdmin for now
+    add_filter 'app/admin'
+    add_group 'ActiveAdmin', 'app/admin'
   end
 
   # Rails

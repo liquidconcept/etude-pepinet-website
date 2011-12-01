@@ -18,7 +18,7 @@ body {
   }
 
   // header
-  header {
+  &> header {
     background-image: image-url('background-light-opacity.png');
     background-repeat: repeat-x;
     width: 100%;
@@ -42,18 +42,74 @@ body {
 
         a, a:visited {
           display: block;
-          color: $color_menu;
+          color: $font_color;
           text-decoration: none;
           padding-bottom: 3px;
 
           &:hover {
-            color: $color_menu_active;
+            color: $font_color_active;
           }
 
           &.active {
-            border-bottom: 3px solid $color_menu_active;
+            border-bottom: 3px solid $font_color_active;
           }
         }
+      }
+    }
+  }
+
+  // content
+  &> content {
+    display: block;
+    min-height: 450px;
+  }
+
+  // footer
+  &> footer {
+    position: fixed;
+    bottom: 0px;
+    background-image: image-url('background-light-opacity.png');
+    background-repeat: repeat-x;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 40px;
+    font-family: $font_footer;
+    font-size: 14px;
+    line-height: 18px;
+    color: $font_color_footer;
+
+    strong, h3 {
+      font-weight: bold;
+    }
+
+    em {
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    content {
+      &> address, &> content {
+        display: block;
+        @include float(left);
+        margin-top: 14px;
+      }
+
+      .news {
+        margin-left: 165px;
+
+        a {
+          color: $font_color_footer;
+          text-decoration: none;
+
+          &:hover {
+            color: $font_color_active;
+          }
+        }
+      }
+
+      .schedule {
+        @include float(right);
+        text-align: right;
       }
     }
   }
@@ -65,6 +121,7 @@ body {
     left: 0px;
     z-index: -1000;
     overflow: hidden;
+    width: 100%;
   }
 }
 

@@ -9,23 +9,31 @@
 //= require jquery_ujs
 //= require underscore
 
-$(function() {
+var fixSize = function() {
+  var windowWidth  = $(window).width(),
+      windowHeight = $(window).height();
 
-  var backgroundResize = function() {
-    var imageWidth   = $('.background').width(),
-        imageHeight  = $('.background').height(),
-        windowWidth  = $(window).width(),
-        windowHeight = $(window).height(),
-        widthRatio   = windowWidth  / imageWidth,
-        heightRatio  = windowHeight / imageHeight;
+  // background image
+  var imageWidth   = $('.background').width(),
+      imageHeight  = $('.background').height(),
+      widthRatio   = windowWidth  / imageWidth,
+      heightRatio  = windowHeight / imageHeight;
 
-    if (widthRatio < heightRatio) {
-      $('.background').css({ width: 'auto', height: '100%', left: (windowWidth - imageWidth) / 2 + 'px' });
-    } else {
-      $('.background').css({ width: '100%', height: 'auto', left: '0px' });
-    }
+  if (widthRatio < heightRatio) {
+    $('.background').css({ width: 'auto', height: '100%', left: (windowWidth - imageWidth) / 2 + 'px' });
+  } else {
+    $('.background').css({ width: '100%', height: 'auto', left: '0px' });
   }
 
-  backgroundResize();
-  $(window).on('resize', backgroundResize);
+  // footer position
+  if (windowHeight < parseInt($('body > content').css('min-height')) + $('body > content').offset().top + $('body > footer').outerHeight(true)) {
+    $('body > footer').css({ position: 'relative' });
+  } else {
+    $('body > footer').css({ position: 'fixed' });
+  }
+}
+
+$(function() {
+  fixSize();
+  $(window).on('resize', fixSize);
 });

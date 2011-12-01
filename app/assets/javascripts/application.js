@@ -33,7 +33,12 @@ var fixSize = function() {
   }
 }
 
-$(function() {
+$(document).on('ready', function() {
+  $('body').children(':not(img)').hide();
+
   fixSize();
   $(window).on('resize', fixSize);
+
+  $('body').children().fadeIn(2000);
 });
+

@@ -8,6 +8,7 @@
 @import "base";
 
 body {
+  background-color: #cdcdcd;
 
   &> header > content,
   &> content,
@@ -27,7 +28,10 @@ body {
 
     h1 {
       @include float(left);
-      @include replace-text-with-dimensions('etude-pepinet-4-logo.jpg');
+      a {
+        display: block;
+        @include replace-text-with-dimensions('etude-pepinet-4-logo.jpg');
+      }
     }
 
     nav {
@@ -121,7 +125,6 @@ body {
     left: 0px;
     z-index: -1000;
     overflow: hidden;
-    width: 100%;
   }
 }
 

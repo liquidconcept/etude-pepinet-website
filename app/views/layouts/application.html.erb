@@ -7,9 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= image_tag('background.jpg', class: 'background', size: '1300x855') %>
+  <%= image_tag('background-page.jpg', class: 'background', size: '1300x855') %>
 
-  <%= yield %>
+  <header>
+    <content>
+      <h1>Étude Pépinet 4 - Avovats</h1>
+      <nav>
+        <ul>
+          <li><%= link_to('accueil', '#', class: 'active') %></li>
+          <li><%= link_to('étude', '#') %></li>
+          <li><%= link_to('équipe', '#') %></li>
+          <li><%= link_to('domaines de compétence', '#') %></li>
+          <li><%= link_to('tarifs', '#') %></li>
+          <li><%= link_to('actualites', '#') %></li>
+          <li><%= link_to('ressources', '#') %></li>
+          <li><%= link_to('postes à pourvoir', '#') %></li>
+          <li><%= link_to('contact', '#') %></li>
+        </ul>
+      </content>
+  </header>
+
+  <content>
+    <%= yield %>
+  </content>
+
+  <footer>
+  </footer>
 
 </body>
 </html>

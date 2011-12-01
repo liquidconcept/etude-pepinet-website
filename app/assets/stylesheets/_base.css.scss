@@ -1,2 +1,10 @@
+@import "compass/reset";
 @import "compass/css3";
+@import "compass/typography";
 
+@import "fonts";
+
+$font_menu: "steelfish", "sans-serif";
+
+$color_menu: #4f4f4f;
+$color_menu_active: #00539b;

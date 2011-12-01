@@ -7,11 +7,65 @@
 
 @import "base";
 
-.background {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: -1000;
-  overflow: hidden;
+body {
+
+  &> header > content,
+  &> content,
+  &> footer > content {
+    display: block;
+    width: 960px;
+    margin: 0 auto;
+  }
+
+  // header
+  header {
+    background-image: image-url('background-light-opacity.png');
+    background-repeat: repeat-x;
+    width: 100%;
+    height: 100px;
+    margin-top: 40px;
+
+    h1 {
+      @include float(left);
+      @include replace-text-with-dimensions('etude-pepinet-4-logo.jpg');
+    }
+
+    nav {
+      @include float(right);
+      font-family: $font_menu;
+      font-size: 24px;
+      text-transform: uppercase;
+      margin-top: 38px;
+
+      ul {
+        @include horizontal-list(12px, left);
+
+        a, a:visited {
+          display: block;
+          color: $color_menu;
+          text-decoration: none;
+          padding-bottom: 3px;
+
+          &:hover {
+            color: $color_menu_active;
+          }
+
+          &.active {
+            border-bottom: 3px solid $color_menu_active;
+          }
+        }
+      }
+    }
+  }
+
+  // Background
+  .background {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -1000;
+    overflow: hidden;
+  }
 }
+
 

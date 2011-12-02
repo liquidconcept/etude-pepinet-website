@@ -70,16 +70,15 @@ body {
     @include clearfix;
     clear: both;
 
-    &> header, &> .contacts {
+    &> header {
       margin-left: image-width('etude-pepinet-4-logo.jpg') + 20px;
     }
 
-    &> content {
-      @include float(left);
-    }
-
+    // contact page
     .contacts {
+      @include float(left);
       width: 240px;
+      margin-left: image-width('etude-pepinet-4-logo.jpg') + 20px;
 
       a {
         color: $font_color;
@@ -92,6 +91,7 @@ body {
     }
 
     .map {
+      @include float(left);
       display: block;
       border: 11px solid #ffffff;
       border-left: 10px solid #ffffff;
@@ -101,6 +101,7 @@ body {
     }
 
     .address {
+      @include float(left);
       margin-top: 20px;
       width: 460px;
 
@@ -117,6 +118,120 @@ body {
       .schedule {
         @extend .phones;
         margin-top: 20px;
+      }
+    }
+
+    // team page
+    &> .team {
+      @include clearfix;
+      display: block;
+      margin-top: 70px;
+
+      h2 {
+        display: none;
+      }
+
+      nav {
+        @include float(left);
+        display: block;
+        width: image-width('etude-pepinet-4-logo.jpg') + 20px;
+        margin-top: 200px;
+
+        button {
+          display: block;
+          background: none;
+          border: none;
+          padding: 0;
+          margin: auto;
+          width: image-width('button-previous.png');
+          height: image-height('button-previous.png');
+          cursor: pointer;
+
+          span {
+            display: block;
+          }
+        }
+
+        &.previous {
+          button span {
+            @include replace-text-with-dimensions('button-previous.png');
+          }
+
+          button:hover span {
+            @include replace-text-with-dimensions('button-previous-hover.png');
+          }
+        }
+
+        &.next {
+          button span {
+            @include replace-text-with-dimensions('button-next.png');
+          }
+
+          button:hover span {
+            @include replace-text-with-dimensions('button-next-hover.png');
+          }
+        }
+      }
+
+      content {
+        @include float(left);
+        display: block;
+        overflow: hidden;
+        position: relative;
+        width: 700px;
+        height: 600px;
+
+        article {
+          display: none;
+          position: absolute;
+          margin-top: 100px;
+          top: 0px;
+          left: 0px;
+          width: 700px;
+          height: 600px;
+
+          strong {
+            text-transform: uppercase;
+            color: $font_color_active;
+            font-family: $font_menu;
+            font-size: 24px;
+            font-weight: normal;
+          }
+
+          h3 {
+            width: 430px;
+            text-transform: uppercase;
+            color: $font_color_active;
+            font-family: $font_menu;
+            font-size: 24px;
+            font-weight: normal;
+            margin-top: 40px;
+          }
+
+          p {
+            width: 430px;
+            text-align: justify;
+          }
+
+          img {
+            position: absolute;
+            top: -110px;
+            right: 0px;
+          }
+
+          a {
+            color: $font_color;
+            text-decoration: none;
+
+            &:hover {
+              color: $font_color_active;
+            }
+          }
+        }
+
+        article:first-child {
+          display: block;
+        }
       }
     }
   }
@@ -187,6 +302,7 @@ body {
     @include stretch;
     background-color: #ffffff;
     @include opacity(0.85);
+    position: fixed;
     .homepage & { @include opacity(0); }
     z-index: -900;
   }

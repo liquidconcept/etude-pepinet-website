@@ -35,6 +35,46 @@ var fixSize = function() {
   }
 }
 
+var switchTeamMember = function(event) {
+  var button    = $(event.currentTarget),
+      direction = button.parent().hasClass('previous') ? 'previous' : 'next',
+      current   = $('.team article:not(:hidden)'),
+      target    = undefined;
+
+  event.preventDefault();
+
+  if ($('.team article:not(:hidden)').queue('fx').length !== 0) {
+    _.delay(switchTeamMember, 100, event);
+    return true;
+  }
+
+  if (direction == 'previous') {
+    target = current.prev();
+    if (target.length === 0) {
+      target = $('.team article').last()
+    }
+
+    target.css({left: '-=700px'}).show();
+    $('.team article:not(:hidden)').animate({left: '+=700px'}, function() {
+      current.hide().css({left: '0px'});
+    });
+  } else {
+    target = current.next();
+    if (target.length === 0) {
+      target = $('.team article').first()
+    }
+
+    target.css({left: '+=700px'}).show();
+    $('.team article:not(:hidden)').animate({left: '-=700px'}, function() {
+      current.hide().css({left: '0px'});
+    });
+  }
+}
+
+var showRandomTeamMember = function() {
+  $(_.shuffle($('#main .team article').hide())[0]).show();
+}
+
 $(document).on('ready', function() {
   // Hide content to show only background image
   if (Modernizr.history) {
@@ -46,7 +86,7 @@ $(document).on('ready', function() {
   $(window).on('resize', fixSize);
 
   // Initialize pjax on menu
-  $('body > header a').bind('click', function(event) {
+  $('body > header a').on('click', function(event) {
     if (!Modernizr.history) {
       return true;
     }
@@ -71,13 +111,18 @@ $(document).on('ready', function() {
           container: '#main',
           success: function() {
             $('html').removeClass('homepage');
+            showRandomTeamMember(); // only occure on team page
           }
         });
       });
     }
   });
 
-  // Fade in content
+  // Initialize team member switcher
+  $('#main').on('click', '.team button', switchTeamMember);
+  showRandomTeamMember();
+
+  // Fade in content (only occure on browser with Histroy capability)
   $('body').children().fadeIn(2000);
 });
 

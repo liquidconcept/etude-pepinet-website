@@ -7,6 +7,7 @@
 //= require modernizr
 //= require jquery
 //= require jquery_ujs
+//= require jquery.pjax
 //= require underscore
 
 var fixSize = function() {
@@ -43,6 +44,38 @@ $(document).on('ready', function() {
   // Call function to fix appearance depending on the size
   fixSize();
   $(window).on('resize', fixSize);
+
+  // Initialize pjax on menu
+  $('body > header a').bind('click', function(event) {
+    if (!Modernizr.history) {
+      return true;
+    }
+    event.preventDefault();
+
+    var href = $(this).attr('href');
+
+    $(this).addClass('active').closest('li').siblings().find('a').removeClass('active');
+    if (href == '/') {
+      $('html').addClass('homepage');
+      $.pjax({
+        url: href,
+        container: '#main',
+        success: function() {
+          $('#overlay').animate({opacity: 0}, 800);
+        }
+      });
+    } else {
+      $('#overlay').animate({opacity: 0.85}, function() {
+        $.pjax({
+          url: href,
+          container: '#main',
+          success: function() {
+            $('html').removeClass('homepage');
+          }
+        });
+      });
+    }
+  });
 
   // Fade in content
   $('body').children().fadeIn(2000);

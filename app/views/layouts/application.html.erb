@@ -14,15 +14,15 @@
     <h1><%= link_to('Étude Pépinet 4 - Avovats', root_path) %></h1>
       <nav>
         <ul>
-          <li><%= link_to('accueil', '#', class: 'active') %></li>
-          <li><%= link_to('étude', '#') %></li>
-          <li><%= link_to('équipe', '#') %></li>
-          <li><%= link_to('domaines de compétence', '#') %></li>
-          <li><%= link_to('tarifs', '#') %></li>
-          <li><%= link_to('actualites', '#') %></li>
-          <li><%= link_to('ressources', '#') %></li>
-          <li><%= link_to('postes à pourvoir', '#') %></li>
-          <li><%= link_to('contact', '#') %></li>
+          <li><%= link_to_with_active('accueil',                '/'           ) %></li>
+          <li><%= link_to_with_active('étude',                  '/etude'      ) %></li>
+          <li><%= link_to_with_active('équipe',                 '/equipe'     ) %></li>
+          <li><%= link_to_with_active('domaines de compétence', '/competence' ) %></li>
+          <li><%= link_to_with_active('tarifs',                 '/tarifs'     ) %></li>
+          <li><%= link_to_with_active('actualites',             '/actualites' ) %></li>
+          <li><%= link_to_with_active('ressources',             '/ressources' ) %></li>
+          <li><%= link_to_with_active('postes à pourvoir',      '/postes'     ) %></li>
+          <li><%= link_to_with_active('contact',                '/contact'    ) %></li>
         </ul>
       </content>
   </header>

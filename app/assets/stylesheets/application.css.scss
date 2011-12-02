@@ -234,6 +234,53 @@ body {
         }
       }
     }
+
+    // news
+    &> header.news_item {
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      em {
+        display: block;
+        margin-bottom: 40px;
+        line-height: 16px;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: normal;
+      }
+    }
+
+    &> article.news_item {
+      margin-left: image-width('etude-pepinet-4-logo.jpg') + 20px;
+    }
+
+    &> content.news {
+      article {
+        margin-left: image-width('etude-pepinet-4-logo.jpg') + 20px;
+        margin-bottom: 20px;
+        font-size: 14px;
+
+        h3 {
+          font-size: 16px;
+          font-weight: bold;
+
+          em {
+            font-style: italic;
+            font-weight: normal;
+          }
+
+          a {
+            color: $font_color;
+            text-decoration: none;
+
+            &:hover {
+              color: $font_color_active;
+            }
+          }
+        }
+      }
+    }
   }
 
   // footer
@@ -264,6 +311,11 @@ body {
 
       .news {
         margin-left: 165px;
+        width: 380px;
+
+        em {
+          white-space: pre;
+        }
 
         a {
           color: $font_color_footer;

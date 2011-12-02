@@ -24,7 +24,8 @@
           <li><%= link_to_with_active('postes à pourvoir',      '/postes'     ) %></li>
           <li><%= link_to_with_active('contact',                '/contact'    ) %></li>
         </ul>
-      </content>
+      </nav>
+    </content>
   </header>
 
   <content id="main">
@@ -42,9 +43,9 @@
 
       <content class="news">
         <h3>Dernières news</h3>
-        <article><em>31 Août 2011</em> - <%= link_to truncate('Dernières nouvelles en provenance du parquet', length: 45), '#' %></article>
-        <article><em>17 juillet 2011</em> - <%= link_to truncate('Un dossier plus important qu’il n’y paraît lorem ipsum bla bla bla', length: 45), '#' %></article>
-        <article><em>24 juin 2011</em> - <%= link_to truncate('Tout sur le droit des affaires', length: 45), '#' %></article>
+        <% News.published.limit(3).each do |news| -%>
+          <article><em><%=l news.published_at.to_time, format: :news_date %></em> - <%= link_to truncate(news.title, length: 45), news_path(news) %></article>
+        <% end -%>
       </content>
 
       <content class="phones">

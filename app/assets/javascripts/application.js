@@ -75,6 +75,38 @@ var showRandomTeamMember = function() {
   $(_.shuffle($('#main .team article').hide())[0]).show();
 }
 
+var clickWithPjax = function(event) {
+  if (!Modernizr.history) {
+    return true;
+  }
+  event.preventDefault();
+
+  var href = $(this).attr('href');
+
+  $(this).addClass('active').closest('li').siblings().find('a').removeClass('active');
+  if (href == '/') {
+    $('html').addClass('homepage');
+    $.pjax({
+      url: href,
+      container: '#main',
+      success: function() {
+        $('#overlay').animate({opacity: 0}, 800);
+      }
+    });
+  } else {
+    $('#overlay').animate({opacity: 0.85}, function() {
+      $.pjax({
+        url: href,
+        container: '#main',
+        success: function() {
+          $('html').removeClass('homepage');
+          showRandomTeamMember(); // only occure on team page
+        }
+      });
+    });
+  }
+}
+
 $(document).on('ready', function() {
   // Hide content to show only background image
   if (Modernizr.history) {
@@ -86,37 +118,8 @@ $(document).on('ready', function() {
   $(window).on('resize', fixSize);
 
   // Initialize pjax on menu
-  $('body > header a').on('click', function(event) {
-    if (!Modernizr.history) {
-      return true;
-    }
-    event.preventDefault();
-
-    var href = $(this).attr('href');
-
-    $(this).addClass('active').closest('li').siblings().find('a').removeClass('active');
-    if (href == '/') {
-      $('html').addClass('homepage');
-      $.pjax({
-        url: href,
-        container: '#main',
-        success: function() {
-          $('#overlay').animate({opacity: 0}, 800);
-        }
-      });
-    } else {
-      $('#overlay').animate({opacity: 0.85}, function() {
-        $.pjax({
-          url: href,
-          container: '#main',
-          success: function() {
-            $('html').removeClass('homepage');
-            showRandomTeamMember(); // only occure on team page
-          }
-        });
-      });
-    }
-  });
+  $('body > header a, body > footer a').on('click', clickWithPjax);
+  $('#main').on('click', '.news h3 a', clickWithPjax);
 
   // Initialize team member switcher
   $('#main').on('click', '.team button', switchTeamMember);

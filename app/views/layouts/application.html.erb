@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= image_tag('background-page.jpg', class: 'background', size: '1300x855') %>
+  <%= image_tag 'background-page.jpg', id: 'background', size: '1300x855' %>
 
   <header>
     <content>
@@ -27,7 +27,7 @@
       </content>
   </header>
 
-  <content>
+  <content id="main">
     <%= yield %>
   </content>
 
@@ -59,6 +59,6 @@
     </content>
   </footer>
 
-  <div class="overlay"></div>
+  <div id="overlay"></div>
 </body>
 </html>

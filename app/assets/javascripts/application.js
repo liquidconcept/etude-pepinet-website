@@ -14,20 +14,20 @@ var fixSize = function() {
       windowHeight = $(window).height();
 
   // background image
-  var imageWidth   = $('.background').width(),
-      imageHeight  = $('.background').height(),
+  var imageWidth   = $('#background').width(),
+      imageHeight  = $('#background').height(),
       widthRatio   = windowWidth  / imageWidth,
       heightRatio  = windowHeight / imageHeight,
       widthDiff    = windowWidth  - imageWidth;
 
   if (widthRatio < heightRatio) {
-    $('.background').css({ width: 'auto', height: '100%', left: (widthDiff < 0 ? widthDiff / 2 : 0) + 'px' });
+    $('#background').css({ width: 'auto', height: '100%', left: (widthDiff < 0 ? widthDiff / 2 : 0) + 'px' });
   } else {
-    $('.background').css({ width: '100%', height: 'auto', left: '0px' });
+    $('#background').css({ width: '100%', height: 'auto', left: '0px' });
   }
 
   // footer position
-  if (windowHeight < parseInt($('body > content').css('min-height')) + $('body > content').offset().top + $('body > footer').outerHeight(true)) {
+  if (windowHeight < parseInt($('body > content').css('min-height')) + $('#main').offset().top + $('body > footer').outerHeight(true)) {
     $('body > footer').css({ position: 'relative' });
   } else {
     $('body > footer').css({ position: 'fixed' });
@@ -35,11 +35,16 @@ var fixSize = function() {
 }
 
 $(document).on('ready', function() {
-  $('body').children(':not(img)').hide();
+  // Hide content to show only background image
+  if (Modernizr.history) {
+    $('body').children(':not(img)').hide();
+  }
 
+  // Call function to fix appearance depending on the size
   fixSize();
   $(window).on('resize', fixSize);
 
+  // Fade in content
   $('body').children().fadeIn(2000);
 });
 

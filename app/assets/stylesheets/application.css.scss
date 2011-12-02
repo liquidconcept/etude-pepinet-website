@@ -8,8 +8,6 @@
 @import "base";
 
 body {
-  background-color: #cdcdcd;
-
   &> header > content,
   &> content,
   &> footer > content {
@@ -66,7 +64,7 @@ body {
   }
 
   // content
-  &> content {
+  #main {
     display: block;
     min-height: 725px;
     @include clearfix;
@@ -99,6 +97,7 @@ body {
       border-left: 10px solid #ffffff;
       border-right: 10px solid #ffffff;
       width: 440px;
+      height: 350px;
     }
 
     .address {
@@ -175,7 +174,7 @@ body {
   }
 
   // Background
-  &> .background {
+  #background {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -184,7 +183,7 @@ body {
   }
 
   // Overlay
-  &> .overlay {
+  #overlay {
     @include stretch;
     background-color: #ffffff;
     @include opacity(0.85);

@@ -26,6 +26,8 @@ body {
     width: 100%;
     height: 100px;
     margin-top: 40px;
+    @include clearfix;
+    overflow: visible;
 
     h1 {
       @include float(left);
@@ -36,11 +38,11 @@ body {
     }
 
     nav {
-      @include float(right);
+      @include float(left);
       font-family: $font_menu;
       font-size: 24px;
       text-transform: uppercase;
-      margin-top: 38px;
+      margin: 38px 0 0 20px;
 
       ul {
         @include horizontal-list(12px, left);
@@ -66,7 +68,58 @@ body {
   // content
   &> content {
     display: block;
-    min-height: 450px;
+    min-height: 725px;
+    @include clearfix;
+    clear: both;
+
+    &> header, &> .contacts {
+      margin-left: image-width('etude-pepinet-4-logo.jpg') + 20px;
+    }
+
+    &> content {
+      @include float(left);
+    }
+
+    .contacts {
+      width: 240px;
+
+      a {
+        color: $font_color;
+        text-decoration: none;
+
+        &:hover {
+          color: $font_color_active;
+        }
+      }
+    }
+
+    .map {
+      display: block;
+      border: 11px solid #ffffff;
+      border-left: 10px solid #ffffff;
+      border-right: 10px solid #ffffff;
+      width: 440px;
+    }
+
+    .address {
+      margin-top: 20px;
+      width: 460px;
+
+      address {
+        @include float(left);
+      }
+
+      .phones {
+        @include float(right);
+        text-align: right;
+        width: 250px;
+      }
+
+      .schedule {
+        @extend .phones;
+        margin-top: 20px;
+      }
+    }
   }
 
   // footer
@@ -79,14 +132,9 @@ body {
     width: 100%;
     height: 100px;
     margin-bottom: 40px;
-    font-family: $font_footer;
     font-size: 14px;
-    line-height: 18px;
     color: $font_color_footer;
-
-    strong, h3 {
-      font-weight: bold;
-    }
+    @include clearfix;
 
     em {
       font-size: 12px;
@@ -113,9 +161,15 @@ body {
         }
       }
 
-      .schedule {
+      .phones {
         @include float(right);
         text-align: right;
+        width: 250px;
+      }
+
+      .schedule {
+        @extend .phones;
+        margin-top: 0px;
       }
     }
   }

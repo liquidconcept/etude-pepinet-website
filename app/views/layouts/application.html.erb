@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="<%= current_page?('/') ? 'homepage' : '' %>">
 <head>
   <title>EtudePepinet</title>
   <%= stylesheet_link_tag    'application' %>
@@ -56,5 +56,6 @@
     </content>
   </footer>
 
+  <div class="overlay"></div>
 </body>
 </html>

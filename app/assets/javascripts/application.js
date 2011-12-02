@@ -17,10 +17,11 @@ var fixSize = function() {
   var imageWidth   = $('.background').width(),
       imageHeight  = $('.background').height(),
       widthRatio   = windowWidth  / imageWidth,
-      heightRatio  = windowHeight / imageHeight;
+      heightRatio  = windowHeight / imageHeight,
+      widthDiff    = windowWidth  - imageWidth;
 
   if (widthRatio < heightRatio) {
-    $('.background').css({ width: 'auto', height: '100%', left: (windowWidth - imageWidth) / 2 + 'px' });
+    $('.background').css({ width: 'auto', height: '100%', left: (widthDiff < 0 ? widthDiff / 2 : 0) + 'px' });
   } else {
     $('.background').css({ width: '100%', height: 'auto', left: '0px' });
   }

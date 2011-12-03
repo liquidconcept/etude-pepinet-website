@@ -2,7 +2,7 @@
   <h2><%= @news.title %></h3>
   <em><%= l @news.published_at.to_time, format: :news_date %></em>
 </header>
-<article id="news_<%= @news.id %>" class="news_item">
+<content id="news_<%= @news.id %>" class="news_item">
   <%= simple_format @news.content %>
-</article>
+</content>
 

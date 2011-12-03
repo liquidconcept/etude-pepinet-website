@@ -1,0 +1,114 @@
+&> .team {
+  @include clearfix;
+  display: block;
+  margin-top: 70px;
+  margin-left: 0px;
+  width: 100%;
+
+  nav {
+    @include float(left);
+    display: block;
+    width: image-width('etude-pepinet-4-logo.jpg') + 20px;
+    margin-top: 200px;
+
+    button {
+      display: block;
+      background: none;
+      border: none;
+      padding: 0;
+      margin: auto;
+      width: image-width('button-previous.png');
+      height: image-height('button-previous.png');
+      cursor: pointer;
+
+      span {
+        display: block;
+      }
+    }
+
+    &.previous {
+      button span {
+        @include replace-text-with-dimensions('button-previous.png');
+      }
+
+      button:hover span {
+        @include replace-text-with-dimensions('button-previous-hover.png');
+      }
+    }
+
+    &.next {
+      button span {
+        @include replace-text-with-dimensions('button-next.png');
+      }
+
+      button:hover span {
+        @include replace-text-with-dimensions('button-next-hover.png');
+      }
+    }
+  }
+
+  content {
+    @include float(left);
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 700px;
+    height: 600px;
+
+    article {
+      display: none;
+      position: absolute;
+      margin-top: 100px;
+      top: 0px;
+      left: 0px;
+      width: 700px;
+      height: 600px;
+
+      h2 {
+        display: none;
+      }
+
+      strong {
+        text-transform: uppercase;
+        color: $font_color_active;
+        font-family: $font_family_title;
+        font-size: 24px;
+        font-weight: normal;
+      }
+
+      h3 {
+        width: 430px;
+        text-transform: uppercase;
+        color: $font_color_active;
+        font-family: $font_family_title;
+        font-size: 24px;
+        font-weight: normal;
+        margin-top: 40px;
+      }
+
+      p {
+        width: 430px;
+        text-align: justify;
+      }
+
+      img {
+        position: absolute;
+        top: -110px;
+        right: 0px;
+      }
+
+      a {
+        color: $font_color;
+        text-decoration: none;
+
+        &:hover {
+          color: $font_color_active;
+        }
+      }
+    }
+
+    article:first-child {
+      display: block;
+    }
+  }
+}

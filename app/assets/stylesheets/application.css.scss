@@ -18,13 +18,13 @@ body {
 
   // header
   &> header {
+    @include clearfix;
     background-image: image-url('background-dark-opacity.png');
     .homepage & { background-image: image-url('background-light-opacity.png'); }
     background-repeat: repeat-x;
     width: 100%;
     height: 100px;
-    margin-top: 40px;
-    @include clearfix;
+    margin: 40px 0 0 0;
     overflow: visible;
 
     h1 {
@@ -37,7 +37,7 @@ body {
 
     nav {
       @include float(left);
-      font-family: $font_menu;
+      font-family: $font_family_title;
       font-size: 24px;
       text-transform: uppercase;
       margin: 38px 0 0 20px;
@@ -49,7 +49,7 @@ body {
           display: block;
           color: $font_color;
           text-decoration: none;
-          padding-bottom: 3px;
+          padding-bottom: 6px;
 
           &:hover {
             color: $font_color_active;
@@ -65,226 +65,66 @@ body {
 
   // content
   #main {
-    display: block;
-    min-height: 725px;
     @include clearfix;
     clear: both;
+    display: block;
+    position: relative;
+    height: 725px;
+
+    &> header, &> content {
+      display: block;
+      margin-left: image-width('etude-pepinet-4-logo.jpg') + 20px;
+      width: 700px;
+    }
 
     &> header {
-      margin-left: image-width('etude-pepinet-4-logo.jpg') + 20px;
-    }
-
-    // contact page
-    .contacts {
-      @include float(left);
-      width: 240px;
-      margin-left: image-width('etude-pepinet-4-logo.jpg') + 20px;
-
-      a {
-        color: $font_color;
-        text-decoration: none;
-
-        &:hover {
-          color: $font_color_active;
-        }
-      }
-    }
-
-    .map {
-      @include float(left);
-      display: block;
-      border: 11px solid #ffffff;
-      border-left: 10px solid #ffffff;
-      border-right: 10px solid #ffffff;
-      width: 440px;
-      height: 350px;
-    }
-
-    .address {
-      @include float(left);
-      margin-top: 20px;
-      width: 460px;
-
-      address {
-        @include float(left);
-      }
-
-      .phones {
-        @include float(right);
-        text-align: right;
-        width: 250px;
-      }
-
-      .schedule {
-        @extend .phones;
-        margin-top: 20px;
-      }
-    }
-
-    // team page
-    &> .team {
-      @include clearfix;
-      display: block;
-      margin-top: 70px;
+      margin-top: 55px;
+      margin-bottom: 40px;
 
       h2 {
-        display: none;
-      }
-
-      nav {
-        @include float(left);
-        display: block;
-        width: image-width('etude-pepinet-4-logo.jpg') + 20px;
-        margin-top: 200px;
-
-        button {
-          display: block;
-          background: none;
-          border: none;
-          padding: 0;
-          margin: auto;
-          width: image-width('button-previous.png');
-          height: image-height('button-previous.png');
-          cursor: pointer;
-
-          span {
-            display: block;
-          }
-        }
-
-        &.previous {
-          button span {
-            @include replace-text-with-dimensions('button-previous.png');
-          }
-
-          button:hover span {
-            @include replace-text-with-dimensions('button-previous-hover.png');
-          }
-        }
-
-        &.next {
-          button span {
-            @include replace-text-with-dimensions('button-next.png');
-          }
-
-          button:hover span {
-            @include replace-text-with-dimensions('button-next-hover.png');
-          }
-        }
-      }
-
-      content {
-        @include float(left);
-        display: block;
-        overflow: hidden;
-        position: relative;
-        width: 700px;
-        height: 600px;
-
-        article {
-          display: none;
-          position: absolute;
-          margin-top: 100px;
-          top: 0px;
-          left: 0px;
-          width: 700px;
-          height: 600px;
-
-          strong {
-            text-transform: uppercase;
-            color: $font_color_active;
-            font-family: $font_menu;
-            font-size: 24px;
-            font-weight: normal;
-          }
-
-          h3 {
-            width: 430px;
-            text-transform: uppercase;
-            color: $font_color_active;
-            font-family: $font_menu;
-            font-size: 24px;
-            font-weight: normal;
-            margin-top: 40px;
-          }
-
-          p {
-            width: 430px;
-            text-align: justify;
-          }
-
-          img {
-            position: absolute;
-            top: -110px;
-            right: 0px;
-          }
-
-          a {
-            color: $font_color;
-            text-decoration: none;
-
-            &:hover {
-              color: $font_color_active;
-            }
-          }
-        }
-
-        article:first-child {
-          display: block;
-        }
-      }
-    }
-
-    // news
-    &> header.news_item {
-      h2 {
-        margin-bottom: 10px;
-      }
-
-      em {
-        display: block;
-        margin-bottom: 40px;
-        line-height: 16px;
-        font-size: 14px;
-        font-style: italic;
+        font-size: 30px;
+        line-height: 34px;
+        color: $font_color_active;
+        font-family: $font_family_title;
+        text-transform: uppercase;
         font-weight: normal;
       }
     }
 
-    &> article.news_item {
-      margin-left: image-width('etude-pepinet-4-logo.jpg') + 20px;
+    h3 {
+      font-weight: bold;
     }
 
-    &> content.news {
-      article {
-        margin-left: image-width('etude-pepinet-4-logo.jpg') + 20px;
-        margin-bottom: 20px;
-        font-size: 14px;
+    strong {
+      font-weight: bold;
+    }
 
-        h3 {
-          font-size: 16px;
-          font-weight: bold;
+    p {
+      margin-top: 20px;
+    }
 
-          em {
-            font-style: italic;
-            font-weight: normal;
-          }
+    ul {
+      li {
+        a {
+          color: $font_color_footer;
+          text-decoration: none;
 
-          a {
-            color: $font_color;
-            text-decoration: none;
-
-            &:hover {
-              color: $font_color_active;
-            }
+          &:hover {
+            color: $font_color_active;
           }
         }
       }
     }
+
+    // spcific pages
+    @import "contact";
+    @import "team";
+    @import "news";
   }
 
   // footer
   &> footer {
+    @include clearfix;
     position: fixed;
     bottom: 0px;
     background-image: image-url('background-dark-opacity.png');
@@ -292,10 +132,10 @@ body {
     background-repeat: repeat-x;
     width: 100%;
     height: 100px;
+    margin-top: 40px;
     margin-bottom: 40px;
     font-size: 14px;
     color: $font_color_footer;
-    @include clearfix;
 
     em {
       font-size: 12px;
@@ -303,15 +143,20 @@ body {
     }
 
     content {
+      @include clearfix;
+      display: block;
+
       &> address, &> content {
-        display: block;
         @include float(left);
+        display: block;
         margin-top: 14px;
       }
 
       .news {
+        display: block;
         margin-left: 165px;
         width: 380px;
+        height: 100px;
 
         em {
           white-space: pre;
@@ -352,9 +197,9 @@ body {
   // Overlay
   #overlay {
     @include stretch;
+    position: fixed;
     background-color: #ffffff;
     @include opacity(0.85);
-    position: fixed;
     .homepage & { @include opacity(0); }
     z-index: -900;
   }

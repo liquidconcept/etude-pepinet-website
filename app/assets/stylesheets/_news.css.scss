@@ -1,0 +1,40 @@
+&> content.news {
+  article {
+    margin-bottom: 20px;
+    font-size: 14px;
+
+    h3 {
+      font-size: 16px;
+      font-weight: normal;
+
+      em {
+        font-style: italic;
+      }
+
+      a {
+        color: $font_color;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          color: $font_color_active;
+        }
+      }
+    }
+  }
+}
+
+&> header.news_item {
+  h2 {
+    margin-bottom: 2px;
+  }
+
+  em {
+    display: block;
+    margin-bottom: 40px;
+    line-height: 16px;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+  }
+}

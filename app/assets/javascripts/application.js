@@ -8,6 +8,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.pjax
+//= require jquery.scroll
 //= require underscore
 
 var fixSize = function() {
@@ -28,11 +29,24 @@ var fixSize = function() {
   }
 
   // footer position
-  if (windowHeight < parseInt($('body > content').css('min-height')) + $('#main').offset().top + $('body > footer').outerHeight(true)) {
+  if (windowHeight < parseInt($('#main').outerHeight(true)) + $('#main').offset().top + $('body > footer').outerHeight(true)) {
     $('body > footer').css({ position: 'relative' });
   } else {
     $('body > footer').css({ position: 'fixed' });
   }
+}
+
+var enableScrollbar = function() {
+  var content = $('#main > content');
+
+  console.log(content.position().top);
+  console.log(content.parent());
+  console.log(content.parent().height());
+  console.log(content.parent().children('header'));
+  console.log(content.parent().children('header').outerHeight(true));
+  console.log(content.parent().height() - content.parent().children('header').outerHeight(true));
+  content.css({ height: content.parent().height() - content.position().top });
+  content.scrollbar();
 }
 
 var switchTeamMember = function(event) {
@@ -83,38 +97,42 @@ var clickWithPjax = function(event) {
 
   var href = $(this).attr('href');
 
-  $(this).addClass('active').closest('li').siblings().find('a').removeClass('active');
-  if (href == '/') {
-    $('html').addClass('homepage');
+  $(this).addClass('active').closest('li').siblings().find('a').removeClass('active'); // switch active class on menu when user click on menu link
+  if (href == '/') { // homepage
+    $('html').addClass('homepage'); // return on homepage
     $.pjax({
       url: href,
       container: '#main',
       success: function() {
-        $('#overlay').animate({opacity: 0}, 800);
+        $('#overlay').animate({opacity: 0}, 800);  // remove overlay to show background image without filter
+        enableScrollbar(); // re-initialize scrollbar on main content
       }
     });
-  } else {
-    $('#overlay').animate({opacity: 0.85}, function() {
+  } else { // other page
+    $('#overlay').animate({opacity: 0.85}, function() { // add overlay to show image bacground with a filter
       $.pjax({
         url: href,
         container: '#main',
         success: function() {
-          $('html').removeClass('homepage');
+          $('html').removeClass('homepage'); // not on homepage
           showRandomTeamMember(); // only occure on team page
+          enableScrollbar(); // re-initialize scrollbar on main content
         }
       });
     });
   }
 }
 
-$(document).on('ready', function() {
+$(function() {
   // Hide content to show only background image
   if (Modernizr.history) {
     $('body').children(':not(img)').hide();
   }
+});
 
-  // Call function to fix appearance depending on the size
-  fixSize();
+$(window).on('load', function() {
+  // Initialize size fix
+  _.defer(fixSize);
   $(window).on('resize', fixSize);
 
   // Initialize pjax on menu
@@ -123,7 +141,10 @@ $(document).on('ready', function() {
 
   // Initialize team member switcher
   $('#main').on('click', '.team button', switchTeamMember);
-  showRandomTeamMember();
+  _.defer(showRandomTeamMember);
+
+  // Initialize scrollbar on main content
+  _.defer(enableScrollbar);
 
   // Fade in content (only occure on browser with Histroy capability)
   $('body').children().fadeIn(2000);

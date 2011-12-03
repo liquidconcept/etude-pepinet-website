@@ -1,0 +1,47 @@
+&> content.contact {
+  .team {
+    @include float(left);
+    width: 240px;
+
+    a {
+      color: $font_color;
+      text-decoration: none;
+
+      &:hover {
+        color: $font_color_active;
+      }
+    }
+  }
+
+  .map {
+    @include float(left);
+    display: block;
+    border: 11px solid #ffffff;
+    border-left: 10px solid #ffffff;
+    border-right: 10px solid #ffffff;
+    width: 440px;
+    height: 350px;
+  }
+
+  .informations {
+    @include float(left);
+    margin: 20px 0 0 0;
+    width: 460px;
+
+    address {
+      @include float(left);
+      width: 210px;
+    }
+
+    .phones {
+      @include float(right);
+      text-align: right;
+      width: 250px;
+    }
+
+    .schedule {
+      @extend .phones;
+      margin-top: 20px;
+    }
+  }
+}

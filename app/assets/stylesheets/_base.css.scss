@@ -5,40 +5,20 @@
 
 @import "fonts";
 
-$font_default: "calibri", "helvetica neue", "arial", "sans-serif";
-$font_menu: "steelfish", "sans-serif";
+$font_family: "calibri", "helvetica neue", "arial", "sans-serif";
+$font_family_title: "steelfish", "sans-serif";
 
 $font_color: #4f4f4f;
 $font_color_active: #00539b;
-
 $font_color_footer: #232323;
+
+@import "scrollbar";
 
 body {
   background-color: #cdcdcd;
 
   font-size: 16px;
   line-height: 18px;
-  font-family: $font_default;
+  font-family: $font_family;
   color: $font_color;
-
-  h2 {
-    font-size: 30px;
-    color: $font_color_active;
-    font-family: $font_menu;
-    text-transform: uppercase;
-    margin: 55px 0 40px 0;
-    font-weight: normal;
-  }
-
-  h3 {
-    font-weight: bold;
-  }
-
-  strong {
-    font-weight: bold;
-  }
-
-  p {
-    margin-top: 20px;
-  }
 }

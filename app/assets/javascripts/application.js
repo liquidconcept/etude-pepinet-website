@@ -125,10 +125,8 @@ $(function() {
 
   // Initialize when background image is loaded
   $('#background').hide().on('load', function() {
-    $('#background').show();
-
     // Initialize size fix
-    _.defer(fixSize);
+    fixSize();
     $(window).on('resize', fixSize);
 
     // Initialize pjax on menu
@@ -141,6 +139,7 @@ $(function() {
 
     // Fade in content (only occure on browser with Histroy capability)
     if (Modernizr.history) {
+      $('#background').show(); // show image before fading content
       $('body').children().fadeIn(2000, function() {
         _.defer(enableScrollbar); // Initialize scrollbar on main content
       });

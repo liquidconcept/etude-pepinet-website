@@ -11,7 +11,9 @@
 //= require jquery.scroll
 //= require underscore
 
-var fixSizeInitialized = false;
+// function
+// - fix background size & position
+// - fix footer position
 var fixSize = function() {
   var windowWidth  = $(window).width(),
       windowHeight = $(window).height();
@@ -39,6 +41,8 @@ var fixSize = function() {
   }
 }
 
+// functiom
+// - enable scrollbar on long content
 var enableScrollbar = function() {
   var content = $('#main > content');
 
@@ -48,6 +52,8 @@ var enableScrollbar = function() {
   }
 }
 
+// function
+// - switch member on team page
 var switchTeamMember = function(event) {
   var direction, target,
       button    = $(event.currentTarget),
@@ -126,6 +132,8 @@ var switchTeamMember = function(event) {
   }
 }
 
+// function
+// - random member tp show on team page
 var showRandomTeamMember = function() {
   var people = $('#main .team article').hide();
   var index  = people.index(_.shuffle(people)[0]);
@@ -134,16 +142,23 @@ var showRandomTeamMember = function() {
   $('nav.people li').eq(index).addClass('active');
 }
 
+// function
+// - use pjax to call link if site support HTML5 histroy
 var clickWithPjax = function(event) {
-  if (!Modernizr.history) {
-    return true;
-  }
+  if (!Modernizr.history) { return true; }
   event.preventDefault();
 
+  // get link href
   var href = $(this).attr('href');
 
-  $(this).addClass('active').closest('li').siblings().find('a').removeClass('active'); // switch active class on menu when user click on menu link
-  if (href == '/') { // homepage
+  // don't load link if it is current page
+  if (window.location.href === href) { return false; }
+
+  // switch active class on menu when user click on menu link
+  $('body header a[href="' + href.match(/\/[^/]*/)[0] + '"]').addClass('active').closest('li').siblings().find('a').removeClass('active');
+
+  // link go to homepage
+  if (href == '/') {
     $('html').addClass('homepage'); // return on homepage
     $.pjax({
       url: href,
@@ -153,7 +168,8 @@ var clickWithPjax = function(event) {
         enableScrollbar(); // re-initialize scrollbar on main content
       }
     });
-  } else { // other page
+  // link got to another page
+  } else {
     $('#overlay').animate({opacity: 0.85}, function() { // add overlay to show image bacground with a filter
       $.pjax({
         url: href,
@@ -168,6 +184,7 @@ var clickWithPjax = function(event) {
   }
 }
 
+// initialization
 $(function() {
   // Hide content to show only background image
   $('body').children().hide();

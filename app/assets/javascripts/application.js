@@ -162,6 +162,7 @@ var clickWithPjax = function(event) {
     $('html').addClass('homepage'); // return on homepage
     $.pjax({
       url: href,
+      timeout: 2000,
       container: '#main',
       success: function() {
         $('#overlay').animate({opacity: 0}, 800);  // remove overlay to show background image without filter
@@ -173,6 +174,7 @@ var clickWithPjax = function(event) {
     $('#overlay').animate({opacity: 0.85}, function() { // add overlay to show image bacground with a filter
       $.pjax({
         url: href,
+        timeout: 2000,
         container: '#main',
         success: function() {
           $('html').removeClass('homepage'); // not on homepage

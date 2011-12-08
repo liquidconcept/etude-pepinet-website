@@ -56,14 +56,14 @@ var enableScrollbar = function() {
 // - switch member on team page
 var switchTeamMember = function(event) {
   var direction, target,
-      button    = $(event.currentTarget),
+      button    = $(this),
       current   = $('.team article:not(:hidden)');
 
-  event.preventDefault();
+  if (event) { event.preventDefault(); }
 
   // delay if slide animation is already active (on multiple click)
-  if ($('.team article').queue('fx').length !== 0) {
-    _.delay(switchTeamMember, 100, event);
+  if ($('.team article:not(:hidden)').queue('fx').length !== 0) {
+    _.delay(function(that) { switchTeamMember.call(that) }, 100, this);
     return true;
   }
 

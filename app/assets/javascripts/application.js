@@ -49,43 +49,89 @@ var enableScrollbar = function() {
 }
 
 var switchTeamMember = function(event) {
-  var button    = $(event.currentTarget),
-      direction = button.parent().hasClass('previous') ? 'previous' : 'next',
-      current   = $('.team article:not(:hidden)'),
-      target    = undefined;
+  var direction, target,
+      button    = $(event.currentTarget),
+      current   = $('.team article:not(:hidden)');
 
   event.preventDefault();
 
-  if ($('.team article:not(:hidden)').queue('fx').length !== 0) {
+  // delay if slide animation is already active (on multiple click)
+  if ($('.team article').queue('fx').length !== 0) {
     _.delay(switchTeamMember, 100, event);
     return true;
   }
 
-  if (direction == 'previous') {
-    target = current.prev();
-    if (target.length === 0) {
-      target = $('.team article').last()
+  // detect target & direct
+  //
+  // if user click on arrow button, direction is set by button clicked
+  // and target is next or previous element
+  if (button.parents('nav.people').length !== 0) {
+    var targetIndex  = button.closest('li').index(),
+        currentIndex = $('nav.people li.active').index();
+
+        target       = $('.team article').eq(targetIndex);
+
+    // abort if target is current member
+    if (target.index() === current.index()) {
+      return true;
     }
 
+    if (targetIndex > currentIndex) {
+      direction = 'next';
+    } else {
+      direction = 'previous';
+    }
+  // if user click on name button, direction is set by reltive position of
+  // name to active name et target is set vy button clicked
+  } else {
+    direction = button.parent().hasClass('previous') ? 'previous' : 'next';
+
+    if (direction == 'previous') {
+      target = current.prev();
+      if (target.length === 0) {
+        target = $('.team article').last()
+      }
+    } else {
+      target = current.next();
+      if (target.length === 0) {
+        target = $('.team article').first()
+      }
+    }
+  }
+
+  // slide member
+  if (direction == 'previous') {
     target.css({left: '-=700px'}).show();
     $('.team article:not(:hidden)').animate({left: '+=700px'}, function() {
       current.hide().css({left: '0px'});
     });
   } else {
-    target = current.next();
-    if (target.length === 0) {
-      target = $('.team article').first()
-    }
-
     target.css({left: '+=700px'}).show();
     $('.team article:not(:hidden)').animate({left: '-=700px'}, function() {
       current.hide().css({left: '0px'});
     });
   }
+
+  // select active people menu
+  if (!$('nav.people ul').data('hover')) {
+    $('nav.people li.active button').animate({opacity: 0.2}, function() {
+      $(this).css({opacity: '', filter: ''}).closest('li').removeClass('active');
+    });
+    $('nav.people button').eq(target.index()).animate({opacity: 1}, function() {
+      $(this).css({opacity: '', filter: ''}).closest('li').addClass('active');
+    });
+  } else {
+    $('nav.people li.active').removeClass('active');
+    $('nav.people button').eq(target.index()).closest('li').addClass('active');
+  }
 }
 
 var showRandomTeamMember = function() {
-  $(_.shuffle($('#main .team article').hide())[0]).show();
+  var people = $('#main .team article').hide();
+  var index  = people.index(_.shuffle(people)[0]);
+
+  people.eq(index).show();
+  $('nav.people li').eq(index).addClass('active');
 }
 
 var clickWithPjax = function(event) {
@@ -138,6 +184,10 @@ $(function() {
 
     // Initialize team member switcher
     $('#main').on('click', '.team button', switchTeamMember);
+    $('nav.people ul').hover(
+      function() { $.data(this, 'hover', true); },
+      function() { $.data(this, 'hover', false); }
+    ).data('hover', false);
     _.defer(showRandomTeamMember);
 
     // Fade in content (only occure on browser with Histroy capability)

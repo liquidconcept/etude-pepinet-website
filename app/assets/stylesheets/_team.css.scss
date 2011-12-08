@@ -6,19 +6,13 @@
   width: 100%;
 
   nav {
-    @include float(left);
     display: block;
-    width: image-width('etude-pepinet-4-logo.jpg') + 20px;
-    margin-top: 200px;
 
     button {
-      display: block;
       background: none;
       border: none;
       padding: 0;
       margin: auto;
-      width: image-width('button-previous.png');
-      height: image-height('button-previous.png');
       cursor: pointer;
 
       span {
@@ -26,7 +20,22 @@
       }
     }
 
+    &.arrow {
+      @include float(left);
+      display: block;
+      width: image-width('etude-pepinet-4-logo.jpg') + 20px;
+      margin-top: 200px;
+
+      button {
+        display: block;
+        width: image-width('button-previous.png');
+        height: image-height('button-previous.png');
+      }
+    }
+
     &.previous {
+      @extend .arrow;
+
       button span {
         @include replace-text-with-dimensions('button-previous.png');
       }
@@ -37,12 +46,42 @@
     }
 
     &.next {
+      @extend .arrow;
+
       button span {
         @include replace-text-with-dimensions('button-next.png');
       }
 
       button:hover span {
         @include replace-text-with-dimensions('button-next-hover.png');
+      }
+    }
+
+    &.people {
+      position: absolute;
+      text-align: center;
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+
+      ul {
+        @include inline-block;
+        @include inline-block-list(6px);
+        height: 40px;
+        line-height: 40px;
+
+        button {
+          @include opacity(0.2);
+          font-size: 12px;
+        }
+
+        &:hover button, & li.active button {
+          @include opacity(1);
+        }
+
+        button:hover {
+          color: $font_color_active;
+        }
       }
     }
   }

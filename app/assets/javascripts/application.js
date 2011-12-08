@@ -11,21 +11,24 @@
 //= require jquery.scroll
 //= require underscore
 
+var fixSizeInitialized = false;
 var fixSize = function() {
   var windowWidth  = $(window).width(),
       windowHeight = $(window).height();
 
   // background image
-  var imageWidth   = $('#background').width(),
-      imageHeight  = $('#background').height(),
+  var background   = $('#background'),
+      imageWidth   = background.width(),
+      imageHeight  = background.height(),
       widthRatio   = windowWidth  / imageWidth,
       heightRatio  = windowHeight / imageHeight,
-      widthDiff    = windowWidth  - imageWidth;
+      imageLeft    = windowWidth  - imageWidth;
 
   if (widthRatio < heightRatio) {
-    $('#background').css({ width: 'auto', height: '100%', left: (widthDiff < 0 ? widthDiff / 2 : 0) + 'px' });
+    background.css({ width: 'auto', height: '100%'});
+    background.css({ left: -Math.abs((windowWidth - background.width()) / 2) }); // image width shoulb be recalculed to center image
   } else {
-    $('#background').css({ width: '100%', height: 'auto', left: '0px' });
+    background.css({ width: '100%', height: 'auto', left: '0px' });
   }
 
   // footer position

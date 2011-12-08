@@ -39,14 +39,10 @@ var fixSize = function() {
 var enableScrollbar = function() {
   var content = $('#main > content');
 
-  console.log(content.position().top);
-  console.log(content.parent());
-  console.log(content.parent().height());
-  console.log(content.parent().children('header'));
-  console.log(content.parent().children('header').outerHeight(true));
-  console.log(content.parent().height() - content.parent().children('header').outerHeight(true));
-  content.css({ height: content.parent().height() - content.position().top });
-  content.scrollbar();
+  if (content.length > 0) {
+    content.css({ height: content.parent().height() - content.position().top });
+    content.scrollbar();
+  }
 }
 
 var switchTeamMember = function(event) {
@@ -125,28 +121,32 @@ var clickWithPjax = function(event) {
 
 $(function() {
   // Hide content to show only background image
-  if (Modernizr.history) {
-    $('body').children(':not(img)').hide();
-  }
+  $('body').children().hide();
+
+  // Initialize when background image is loaded
+  $('#background').hide().on('load', function() {
+    $('#background').show();
+
+    // Initialize size fix
+    _.defer(fixSize);
+    $(window).on('resize', fixSize);
+
+    // Initialize pjax on menu
+    $('body > header a, body > footer a').on('click', clickWithPjax);
+    $('#main').on('click', '.news h3 a', clickWithPjax);
+
+    // Initialize team member switcher
+    $('#main').on('click', '.team button', switchTeamMember);
+    _.defer(showRandomTeamMember);
+
+    // Fade in content (only occure on browser with Histroy capability)
+    if (Modernizr.history) {
+      $('body').children().fadeIn(2000, function() {
+        _.defer(enableScrollbar); // Initialize scrollbar on main content
+      });
+    } else {
+      $('body').children().show();
+      _.defer(enableScrollbar); // Initialize scrollbar on main content
+    }
+  });
 });
-
-$(window).on('load', function() {
-  // Initialize size fix
-  _.defer(fixSize);
-  $(window).on('resize', fixSize);
-
-  // Initialize pjax on menu
-  $('body > header a, body > footer a').on('click', clickWithPjax);
-  $('#main').on('click', '.news h3 a', clickWithPjax);
-
-  // Initialize team member switcher
-  $('#main').on('click', '.team button', switchTeamMember);
-  _.defer(showRandomTeamMember);
-
-  // Initialize scrollbar on main content
-  _.defer(enableScrollbar);
-
-  // Fade in content (only occure on browser with Histroy capability)
-  $('body').children().fadeIn(2000);
-});
-

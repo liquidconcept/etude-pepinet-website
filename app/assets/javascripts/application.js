@@ -224,7 +224,7 @@ $(function() {
       $('#overlay').removeClass('on-load'); // hide overlay to show site
       _.defer(enableScrollbar); // Initialize scrollbar on main content
     }
-  }).attr('src', $('#background').attr('src'));
+  }).attr('src', $('#background').attr('src')); // ensure load event is fired
 });
 
 // add MSIE class to html tag

@@ -191,6 +191,10 @@ $(function() {
 
   // Initialize when background image is loaded
   $('#background').hide().on('load', function() {
+    // show on-load overlay under site to authorize correct site calculation
+    $('#overlay').addClass('on-load').show();
+    $('body').children().show();
+
     // Initialize size fix
     fixSize();
     $(window).on('resize', fixSize);
@@ -209,12 +213,14 @@ $(function() {
 
     // Fade in content (only occure on browser with Histroy capability)
     if (Modernizr.history) {
-      $('#background').show(); // show image before fading content
+      $('body').children(':not(#background)').hide();
+      $('#overlay').hide().removeClass('on-load'); // hide overlay to show site
+
       $('body').children().fadeIn(2000, function() {
         _.defer(enableScrollbar); // Initialize scrollbar on main content
       });
     } else {
-      $('body').children().show();
+      $('#overlay').hide().removeClass('on-load'); // hide overlay to show site
       _.defer(enableScrollbar); // Initialize scrollbar on main content
     }
   });

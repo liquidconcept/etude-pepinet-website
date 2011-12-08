@@ -125,7 +125,7 @@ body {
   // footer
   &> footer {
     @include clearfix;
-    position: fixed;
+    position: relative;
     bottom: 0px;
     background-image: image-url('background-dark-opacity.png');
     .homepage & { background-image: image-url('background-light-opacity.png'); }
@@ -202,6 +202,12 @@ body {
     @include opacity(0.85);
     .homepage & { @include opacity(0); }
     z-index: -900;
+
+    &.on-load {
+      z-index: 1000;
+      @include opacity(1);
+      background-color: $background_color;
+    }
   }
 }
 

@@ -12,10 +12,12 @@ $font_color: #4f4f4f;
 $font_color_active: #00539b;
 $font_color_footer: #232323;
 
+$background_color: #cdcdcd;
+
 @import "scrollbar";
 
 body {
-  background-color: #cdcdcd;
+  background-color: $background_color;
 
   font-size: 16px;
   line-height: 18px;

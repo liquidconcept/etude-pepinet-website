@@ -2,11 +2,11 @@
   <h2>Actualités</h2>
 </header>
 
-<content class="news">
+<section class="news">
   <% News.published.limit(5).each do |news| -%>
     <article id="news_<%= news.id %>">
       <h3><em><%= l news.published_at.to_time, format: :news_date %></em> - <%= link_to news.title, news_path(news) %></h3>
       <%= simple_format truncate(news.content, length: 500) %>
     </article>
   <% end -%>
-</content>
+</section>

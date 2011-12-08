@@ -44,7 +44,7 @@ var fixSize = function() {
 // functiom
 // - enable scrollbar on long content
 var enableScrollbar = function() {
-  var content = $('#main > content');
+  var content = $('#main > section');
 
   if (content.length > 0) {
     content.css({ height: content.parent().height() - content.position().top });
@@ -121,10 +121,10 @@ var switchTeamMember = function(event) {
   // select active people menu
   if (!$('nav.people ul').data('hover')) {
     $('nav.people li.active button').animate({opacity: 0.2}, function() {
-      $(this).css({opacity: '', filter: ''}).closest('li').removeClass('active');
+      $(this).closest('li').css({opacity: '', filter: '', zoom: ''}).removeClass('active');
     });
     $('nav.people button').eq(target.index()).animate({opacity: 1}, function() {
-      $(this).css({opacity: '', filter: ''}).closest('li').addClass('active');
+      $(this).closest('li').css({opacity: '', filter: '', zoom: ''}).addClass('active');
     });
   } else {
     $('nav.people li.active').removeClass('active');
@@ -188,15 +188,14 @@ var clickWithPjax = function(event) {
 
 // initialization
 $(function() {
-  // Hide content to show only background image
-  $('body').children().hide();
+  // Overlay is set on front of background until is loaded
+  $('#overlay').addClass('on-load');
+
+  // hide team members to avoid flash on load
+  $('#main > section.team > section > article').hide();
 
   // Initialize when background image is loaded
-  $('#background').hide().on('load', function() {
-    // show on-load overlay under site to authorize correct site calculation
-    $('#overlay').addClass('on-load').show();
-    $('body').children().show();
-
+  $('#background').on('load', function() {
     // Initialize size fix
     fixSize();
     $(window).on('resize', fixSize);
@@ -215,15 +214,20 @@ $(function() {
 
     // Fade in content (only occure on browser with Histroy capability)
     if (Modernizr.history) {
-      $('body').children(':not(#background)').hide();
-      $('#overlay').hide().removeClass('on-load'); // hide overlay to show site
+      $('body').children(':not(#background)').hide(); // hide all ellements on front of background image
+      $('#overlay').removeClass('on-load'); // site is loaded, ensure overlay is not on front
 
       $('body').children().fadeIn(2000, function() {
         _.defer(enableScrollbar); // Initialize scrollbar on main content
       });
     } else {
-      $('#overlay').hide().removeClass('on-load'); // hide overlay to show site
+      $('#overlay').removeClass('on-load'); // hide overlay to show site
       _.defer(enableScrollbar); // Initialize scrollbar on main content
     }
-  });
+  }).attr('src', $('#background').attr('src'));
 });
+
+// add MSIE class to html tag
+if (jQuery.browser.msie) {
+  $('html').addClass('msie-' + parseInt(jQuery.browser.version));
+}

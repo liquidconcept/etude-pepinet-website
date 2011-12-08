@@ -66,7 +66,7 @@
 
       ul {
         @include inline-block;
-        @include inline-block-list(6px);
+        @include horizontal-list(10px, left);
         height: 40px;
         line-height: 40px;
 
@@ -83,10 +83,15 @@
           color: $font_color_active;
         }
       }
+
+      // hide on msie7 beacause style render very bad
+      .msie-7 & {
+        display: none;
+      }
     }
   }
 
-  content {
+  section {
     @include float(left);
     display: block;
     overflow: hidden;

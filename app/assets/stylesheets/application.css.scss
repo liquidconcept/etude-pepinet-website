@@ -8,9 +8,9 @@
 @import "base";
 
 body {
-  &> header > content,
-  &> content,
-  &> footer > content {
+  &> header > section,
+  &> section,
+  &> footer > section {
     display: block;
     width: 960px;
     margin: 0 auto;
@@ -43,7 +43,7 @@ body {
       margin: 38px 0 0 20px;
 
       ul {
-        @include horizontal-list(12px, left);
+        @include horizontal-list(10px, left);
 
         a, a:visited {
           display: block;
@@ -71,7 +71,7 @@ body {
     position: relative;
     height: 725px;
 
-    &> header, &> content {
+    &> header, &> section {
       display: block;
       margin-left: image-width('etude-pepinet-4-logo.jpg') + 20px;
       width: 700px;
@@ -142,11 +142,11 @@ body {
       font-style: italic;
     }
 
-    content {
+    section {
       @include clearfix;
       display: block;
 
-      &> address, &> content {
+      &> address, &> section {
         @include float(left);
         display: block;
         margin-top: 14px;

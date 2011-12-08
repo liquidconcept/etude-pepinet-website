@@ -2,16 +2,16 @@
 <html class="<%= current_page?('/') ? 'homepage' : '' %>">
 <head>
   <title>EtudePepinet</title>
-  <%= stylesheet_link_tag    'application' %>
   <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag    'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= image_tag 'background-page.jpg', id: 'background', size: '1300x855' %>
 
   <header>
-    <content>
-    <h1><%= link_to('Étude Pépinet 4 - Avovats', root_path) %></h1>
+    <section>
+      <h1><%= link_to('Étude Pépinet 4 - Avovats', root_path) %></h1>
       <nav>
         <ul>
           <li><%= link_to_with_active('accueil',                '/'            ) %></li>
@@ -25,15 +25,15 @@
           <li><%= link_to_with_active('contact',                '/contact'     ) %></li>
         </ul>
       </nav>
-    </content>
+    </section>
   </header>
 
-  <content id="main">
+  <section id="main">
     <%= yield %>
-  </content>
+  </section>
 
   <footer>
-    <content>
+    <section>
       <address>
         <strong>Etude Pépinet 4</strong><br />
         Place Pépinet 4<br />
@@ -41,23 +41,23 @@
         1002 Lausanne
       </address>
 
-      <content class="news">
+      <section class="news">
         <h3>Dernières news</h3>
         <% News.published.limit(3).each do |news| -%>
           <article><em><%=l news.published_at.to_time, format: :news_date %></em> - <%= link_to truncate(news.title, length: 45), news_path(news) %></article>
         <% end -%>
-      </content>
+      </section>
 
-      <content class="phones">
+      <section class="phones">
         <strong>Tél</strong> : 021 319 90 90<br />
         <strong>Fax</strong> : 021 319 90 80
-      </content>
+      </section>
 
-      <content class="schedule">
+      <section class="schedule">
         <strong>Réception</strong> : 8h00 – 12h00 / 13h30 – 17h00<br />
         <strong>Téléphone</strong> : 9h00 – 12h00 / 13h30 – 17h00
-      </content>
-    </content>
+      </section>
+    </section>
   </footer>
 
   <div id="overlay"></div>

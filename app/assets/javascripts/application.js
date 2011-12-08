@@ -47,7 +47,7 @@ var enableScrollbar = function() {
   var content = $('#main > section');
 
   if (content.length > 0) {
-    content.css({ height: content.parent().height() - content.position().top });
+    content.css({ height: content.parent().height() - content.position().top - parseInt(content.css('margin-top')) - parseInt(content.css('padding-top')) });
     content.scrollbar();
   }
 }

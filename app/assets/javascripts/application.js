@@ -228,7 +228,6 @@ $(function() {
 
   // google analytics tracking with pjax
   $('body').on('pjax:end', function() {
-    console.log('dsad');
     if (typeof _gaq !== 'undefined') {
       _gaq.push(['_trackPageview', window.location.pathname]);
     }

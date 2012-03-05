@@ -225,6 +225,14 @@ $(function() {
       _.defer(enableScrollbar); // Initialize scrollbar on main content
     }
   }).attr('src', $('#background').attr('src')); // ensure load event is fired
+
+  // google analytics tracking with pjax
+  $('body').on('pjax:end', function() {
+    console.log('dsad');
+    if (typeof _gaq !== 'undefined') {
+      _gaq.push(['_trackPageview', window.location.pathname]);
+    }
+  });
 });
 
 // add MSIE class to html tag

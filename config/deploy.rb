@@ -6,7 +6,7 @@ set :real_domain,  "www.#{domain}"
 
 set :scm,         :git
 set :repository,  'git@git.liquid-concept.ch:clients/etude-pepinet/website.git'
-set :branch,      ENV['deploy_branch'] || 'master'
+set :branch,      ENV['deploy_branch'] || 'production'
 
 ssh_options[:forward_agent] = true
 

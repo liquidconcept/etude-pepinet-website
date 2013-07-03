@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Globals dependencies
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.13'
 gem 'migrant'
 gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre'
@@ -15,12 +15,13 @@ end
 
 # Assets dependencies
 group :assets do
-  gem 'jquery-rails'
-  gem 'sass-rails',   '~> 3.1.5'
+  gem 'jquery-rails', '2.1.4'
+  gem 'coffee-rails',   '~> 3.2'
+  gem 'sass-rails',   '~> 3.2'
   gem 'uglifier',     '>= 1.0.3'
   gem 'therubyracer'
 
-  gem 'compass',      '~> 0.12.alpha.2'
+  gem 'compass-rails'
 end
 
 # Development environment dependencies (also needed by test environement)

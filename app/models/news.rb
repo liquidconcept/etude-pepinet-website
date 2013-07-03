@@ -9,7 +9,7 @@ class News < ActiveRecord::Base
 
   default_scope order('created_at DESC')
 
-  scope :published, where(['published_at <= ?', Time.zone.now])
+  scope :published, lambda { where(['published_at <= ?', Time.zone.now]) }
 
   set_callback :initialize, :after, lambda { self.published_at ||= Time.zone.now }
 end

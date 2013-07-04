@@ -10,6 +10,7 @@
 //= require jquery.pjax
 //= require jquery.scroll
 //= require underscore
+//= require lightbox
 
 // function
 // - fix background size & position
@@ -217,7 +218,7 @@ $(function() {
       $('body').children(':not(#background)').hide(); // hide all ellements on front of background image
       $('#overlay').removeClass('on-load'); // site is loaded, ensure overlay is not on front
 
-      $('body').children().fadeIn(2000, function() {
+      $('body').children(':not(#details)').fadeIn(2000, function() {
         _.defer(enableScrollbar); // Initialize scrollbar on main content
       });
     } else {
@@ -225,6 +226,9 @@ $(function() {
       _.defer(enableScrollbar); // Initialize scrollbar on main content
     }
   }).attr('src', $('#background').attr('src')); // ensure load event is fired
+
+  $('#main').on('click', '.cv > ul > li > a', lightboxShow);
+  $('#details > .close').on('click', hideDetail);
 
   // google analytics tracking with pjax
   $('body').on('pjax:end', function() {

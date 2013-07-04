@@ -7,7 +7,7 @@
 
 @import "base";
 
-body {
+body, body > div.wrapper {
   &> header > section,
   &> section,
   &> footer > section {
@@ -215,6 +215,73 @@ body {
       @include opacity(1);
       background-color: $background_color;
     }
+  }
+}
+
+/* Overlay lightbox */
+.overlay_lightbox {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+
+  * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    &.background {
+      background: $background_color;
+      @include opacity(0.2);
+    }
+
+    &.loader {
+      /*background: inline-image('loader.gif') center no-repeat;*/
+    }
+  }
+
+}
+
+body > .overlay {
+  position: fixed;
+}
+
+/* Lightbox */
+#details {
+  position: relative;
+  display: none;
+  width: 960px;
+  height: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
+  border: 1px $font_color_active solid;
+  background-color: white;
+  z-index: 3000;
+
+  .close {
+    font-size: 2em;
+    color: $font_color_active;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 3010;
+  }
+
+  article {
+    $width: 900px;
+    $padding: (960px - $width) / 2;
+    width: $width;
+    padding: $padding;
+    display: none;
+    position: relative;
+    z-index: 3005;
+    @include pie-clearfix;
   }
 }
 

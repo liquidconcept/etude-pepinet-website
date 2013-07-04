@@ -282,6 +282,82 @@ body > .overlay {
     position: relative;
     z-index: 3005;
     @include pie-clearfix;
+
+    h3 {
+      width: 430px;
+      text-transform: uppercase;
+      color: $font_color_active;
+      font-family: $font_family_title;
+      font-size: 24px;
+      font-weight: normal;
+    }
+
+    nav {
+      border-bottom: solid 1px $font_color_active;
+      padding-bottom: 45px;
+
+      ul {
+        margin-top: 20px;
+        clear: both;
+
+        li {
+          width: 179px;
+          height: 30px;
+          padding-top: 15px;
+          display: inline;
+          float: left;
+          border-left: 1px solid $font_color_active;
+
+          span {
+            margin-right: 5px;
+          }
+
+          a {
+            color: $font_color_active;
+          }
+        }
+
+        li.formation {
+          border-left: none;
+
+          span {
+            margin-left: 20%;
+          }
+        }
+
+        li.experience {
+          span {
+            margin-left: 20%;
+          }
+        }
+
+        li.activity {
+          span {
+            margin-left: 15%;
+          }
+        }
+
+        li.life {
+          span {
+            margin-left: 15%;
+          }
+        }
+
+        li.publish {
+          span {
+            margin-left: 20%;
+          }
+        }
+
+        li:hover {
+          background-color: $font_color_active;
+
+          a {
+            color: white;
+          }
+        }
+      }
+    }
   }
 }
 

@@ -9,7 +9,7 @@
         Pépinet 4. Il bénéficie d'une riche expérience professionnelle dans tous les domaines du droit. Connu pour sa ténacité et son
         efficacité, il pratique principalement le droit du bail, le droit du travail, le droit de la famille et le droit des assurances.</p>
 
-      <div class="span3">
+      <div class="span3 contact">
         <h3>Langues parlées</h3>
         <p>Français, Allemand, Anglais</p>
 
@@ -18,7 +18,8 @@
           email: <%= mail_to 'micheli@avopep.ch', nil, encode: 'hex' %></p>
       </div>
       <div class="span3 cv">
-        <%= render partial: 'cv' %>
+        <% @team_name = 'micheli' %>
+        <%= render partial: 'list_menu_cv', team_name: @team_name %>
       </div>
 
       <%= image_tag 'team-jacques-micheli.png' %>
@@ -34,7 +35,7 @@
 
       <p>Parallèlement à son activité d'avocat, Me Schwaab participe à l'administration de plusieurs sociétés commerciales et de fondations.</p>
 
-      <div class="span3">
+      <div class="span3 contact">
         <h3>Langues parlées</h3>
         <p>Français, Allemand, Anglais</p>
 
@@ -43,7 +44,8 @@
           email: <%= mail_to 'jjs@avopep.ch', nil, encode: 'hex' %></p>
       </div>
       <div class="span3 cv">
-        <%= render partial: 'cv' %>
+        <% @team_name = 'schwaab' %>
+        <%= render partial: 'list_menu_cv', team_name: @team_name %>
       </div>
 
       <%= image_tag 'team-jean-jacques-schwaab.png' %>
@@ -59,7 +61,7 @@
 
       <p>Me Jaccottet Tissot est l'avocate-conseil de nombreuses associations à vocation sociale.</p>
 
-      <div class="span3">
+      <div class="span3 contact">
         <h3>Langues parlées</h3>
         <p>Français, Allemand, Anglais</p>
 
@@ -68,7 +70,8 @@
           email: <%= mail_to 'jaccottet@avopep.ch', nil, encode: 'hex' %></p>
       </div>
       <div class="span3 cv">
-        <%= render partial: 'cv' %>
+        <% @team_name = 'tissot' %>
+        <%= render partial: 'list_menu_cv', team_name: @team_name %>
       </div>
 
       <%= image_tag 'team-catherine-jaccottet-tissot.png' %>
@@ -84,7 +87,7 @@
       <p>Parallèlement à son activité d'avocat, Me Crettaz fonctionne comme consultant au sein de l'ASSUAS-Vaud. Il est également actif depuis de
         nombreuses années dans la vie culturelle de la Ville de Lausanne.</p>
 
-      <div class="span3">
+      <div class="span3 contact">
         <h3>Langues parlées</h3>
         <p>Français, Allemand, Anglais</p>
 
@@ -93,7 +96,8 @@
           email: <%= mail_to 'crettaz@avopep.ch', nil, encode: 'hex' %></p>
       </div>
       <div class="span3 cv">
-        <%= render partial: 'cv' %>
+        <% @team_name = 'crettaz' %>
+        <%= render partial: 'list_menu_cv', team_name: @team_name %>
       </div>
 
       <%= image_tag 'team-joel-crettaz.png' %>
@@ -110,7 +114,7 @@
       <p>Parallèlement à son activité d'avocate, Me Dupont enseigne le droit des assurances sociales à la Faculté de droit de Neuchâtel. Elle est
         vice-présidente de l'ASSUAS-Vaud et préside la Commission vaudoise des PAH de Pro Infirmis.</p>
 
-      <div class="span3">
+      <div class="span3 contact">
         <h3>Langues parlées</h3>
         <p>Français, Allemand, Anglais</p>
 
@@ -119,7 +123,8 @@
           email: <%= mail_to 'dupont@avopep.ch', nil, encode: 'hex' %></p>
       </div>
       <div class="span3 cv">
-        <%= render partial: 'cv' %>
+        <% @team_name = 'dupont' %>
+        <%= render partial: 'list_menu_cv', team_name: @team_name %>
       </div>
 
       <%= image_tag 'team-anne-sylvie-dupont.png' %>
@@ -135,7 +140,7 @@
       <p>Parallèlement à son activité d’avocate, Me Chiavazza est membre du comité de la Ligue suisse des droits de l’homme section vaudoise et
         fonctionne comme consultante au sein de l’ASSUAS-Vaud.</p>
 
-      <div class="span3">
+      <div class="span3 contact">
         <h3>Langues parlées</h3>
         <p>Français, Allemand, Anglais,<br /> Espagnol, Italien</p>
 
@@ -144,7 +149,8 @@
           email: <%= mail_to 'chiavazza@avopep.ch', nil, encode: 'hex' %></p>
       </div>
       <div class="span3 cv">
-        <%= render partial: 'cv' %>
+        <% @team_name = 'chiavazza' %>
+        <%= render partial: 'list_menu_cv', team_name: @team_name %>
       </div>
 
       <%= image_tag 'team-sandrine-chiavazza.png' %>

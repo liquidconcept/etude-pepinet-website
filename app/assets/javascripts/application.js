@@ -47,6 +47,7 @@ var fixSize = function() {
 var enableScrollbar = function() {
   var content = $('#main > section');
 
+  console.log(content);
   if (content.length > 0) {
     content.css({ height: content.parent().height() - content.position().top - parseInt(content.css('margin-top')) - parseInt(content.css('padding-top')) });
     content.scrollbar();
@@ -227,8 +228,9 @@ $(function() {
     }
   }).attr('src', $('#background').attr('src')); // ensure load event is fired
 
-  $('#main').on('click', '.cv > ul > li > a', lightboxShow);
-  $('#details > .close').on('click', hideDetail);
+  $('#main').on('click', '.cv > ul > li > a', showCv);
+  $('#details > .close').on('click', hideCv);
+  $('#details > article > nav > ul > li').on('click', menuCvLightbox);
 
   // google analytics tracking with pjax
   $('body').on('pjax:end', function() {

@@ -277,9 +277,10 @@ body > .overlay {
     $width: 900px;
     $padding: (960px - $width) / 2;
     width: $width;
+    height: 440px;
     padding: $padding;
     display: none;
-    position: relative;
+    position: absolute;
     z-index: 3005;
     @include pie-clearfix;
 
@@ -290,6 +291,43 @@ body > .overlay {
       font-family: $font_family_title;
       font-size: 24px;
       font-weight: normal;
+      float: left;
+
+      .name {
+        margin-left: 20px;
+        color: grey;
+      }
+    }
+
+    .icon_media {
+      float: right;
+      height: 30px;
+      width: 80px;
+
+      span.icon {
+        float: right;
+        height: 20px;
+        width: 20px;
+        margin-left: 10px;
+      }
+
+      .linkin {
+        @include replace-text('linkin.jpg');
+      }
+
+      .twitter {
+        @include replace-text('twitter.png');
+      }
+
+      .linkin:hover {
+        cursor: pointer;
+        @include replace-text('linkin_active.jpg');
+      }
+
+      .twitter:hover {
+        cursor: pointer;
+        @include replace-text('twitter_active.png');
+      }
     }
 
     nav {
@@ -349,11 +387,33 @@ body > .overlay {
           }
         }
 
-        li:hover {
+        li:hover, li.active {
+          cursor: pointer;
           background-color: $font_color_active;
 
           a {
             color: white;
+          }
+        }
+      }
+    }
+
+    .container {
+      width: 900px;
+      height: 355px;
+      margin-top: 30px;
+      padding-right: 30px;
+      position: absolute;
+      display: none;
+      overflow: scroll;
+
+      .content {
+        p {
+          margin-bottom: 20px;
+
+          span.italic {
+            font-style: italic;
+            color: $font_color_active;
           }
         }
       }

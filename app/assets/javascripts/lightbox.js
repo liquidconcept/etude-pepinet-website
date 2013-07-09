@@ -35,11 +35,12 @@ scrollbarWidth = (function() {
 })();
 
 // LightBox Show
-var lightboxShow = function() {
+var showCv = function() {
   var item_class = $(this).first();
+  var team_name = ($(this).data('name'));
   scrollPosition = $(window).scrollTop();
 
-  $('#details article').show();
+  $('#details article#' + team_name).show();
   $('body > *:not(#details)').wrapAll('<div class="wrapper" />').parent()
   .css({
     position: 'fixed',
@@ -60,6 +61,9 @@ var lightboxShow = function() {
     height: $('section#main > div').outerHeight(),
   });
 
+  var itemIdentifier = $(this).data('menuItem');
+  selectLightboxItem(itemIdentifier);
+
   $('#details').fadeIn();
 
   // var item = _.find(items, function(item, key) { return item.index === parseInt(item_class.match(/\d+/)[0]) });
@@ -67,8 +71,8 @@ var lightboxShow = function() {
   // _gaq.push(['_trackPageview', '/items/' + item.key]);
 }
 
-// LightBox Hide
-var hideDetail = function(){
+// CV Hide
+var hideCv = function(){
   overlayToggle($('body'));
 
   $('#details').fadeOut(function() {
@@ -82,3 +86,21 @@ var hideDetail = function(){
   History.resetLocation();
   _gaq.push(['_trackPageview', '/']);
 }
+
+// Lightbox menu
+var menuCvLightbox = function(){
+  var itemIdentifier = $(this).find('a').data('menuItem');
+  selectLightboxItem(itemIdentifier);
+}
+
+var selectLightboxItem = function(itemIdentifier) {
+  // show active item menu
+  var newActiveTab = $('#details nav a[data-menu-item=' + itemIdentifier + ']').parents('li')
+  newActiveTab.siblings().removeClass('active');
+  newActiveTab.addClass('active');
+
+  // show the current container
+  $('#details .container.active').fadeOut().removeClass('active');
+  $('#details .container.' + itemIdentifier ).addClass('active').fadeIn();
+}
+

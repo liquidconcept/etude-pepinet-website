@@ -63,8 +63,10 @@
       bottom: 0px;
       left: 0px;
       width: 100%;
+      @include clearfix;
 
       ul {
+        @include clearfix;
         @include inline-block;
         @include horizontal-list(10px, left);
         height: 40px;
@@ -118,6 +120,10 @@
         font-family: $font_family_title;
         font-size: 24px;
         font-weight: normal;
+      }
+
+      .contact {
+        margin-left: 0px;
       }
 
       .cv {

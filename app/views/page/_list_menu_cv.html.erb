@@ -1,0 +1,22 @@
+<h3>Curriculum Vitae</h3>
+<ul>
+  <li class="formation"><span class="icon icon-book"></span>
+    <a href="#" data-menu-item="formation" data-name="<%= @team_name %>">Formation</a>
+  </li>
+  <li class="experience"><span class="icon icon-lock"></span>
+    <a href="#" data-menu-item="experience" data-name="<%= @team_name %>">Expériences</a>
+  </li>
+  <li class="activity"><span class="icon icon-comment"></span>
+    <a href="#" data-menu-item="activity" data-name="<%= @team_name %>">Autres activités</a>
+  </li>
+  <% if File.exists?(Rails.root.join('app', 'views', 'page', "_#{@team_name}_life.html.erb")) %>
+    <li class="life"><span class="icon icon-user"></span>
+      <a href="#" data-menu-item="life" data-name="<%= @team_name %>">Vie associative</a>
+    </li>
+  <% end %>
+  <% if File.exists?(Rails.root.join('app', 'views', 'page', "_#{@team_name}_publish.html.erb")) %>
+    <li class="publish"><span class="icon icon-pencil"></span>
+      <a href="#" data-menu-item="publish" data-name="<%= @team_name %>">Publication</a>
+    </li>
+  <% end %>
+</ul>

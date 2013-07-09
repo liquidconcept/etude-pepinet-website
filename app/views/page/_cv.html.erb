@@ -1,8 +1,49 @@
-<h3>Curriculum Vitae</h3>
-<ul>
-  <li><span class="icon icon-book"></span><a href="#">Formation</a></li>
-  <li><span class="icon icon-lock"></span><a href="#">Expériences professionel</a></li>
-  <li><span class="icon icon-comment"></span><a href="#">Autres activités</a></li>
-  <li><span class="icon icon-user"></span><a href="#">Vie associative</a></li>
-  <li><span class="icon icon-pencil"></span><a href="#">Publication</a></li>
-</ul>
+<% @team = {tissot: {name: 'ME CATHERINE JACCOTTET TISSOT', twitter: nil, linkin: 'ch.linkedin.com/pub/catherine-jaccottet-tissot/34/720/319/'},
+            crettaz: {name: 'ME JOËL CRETTAZ', twitter: nil, linkin: nil},
+            dupont: {name: 'ME ANNE-SYLVIE DUPONT', twitter: nil, linkin: 'ch.linkedin.com/in/annesylviedupont/'},
+            chiavazza: {name: 'ME SANDRINE CHIAVAZZA', twitter: nil, linkin: 'ch.linkedin.com/pub/sandrine-chiavazza/30/55/475/'},
+            micheli: {name: 'ME JACQUES MICHELI', twitter: nil, linkin: nil},
+            schwaab: {name: 'ME JEAN JACQUES SCHWAAB', twitter: nil, linkin: 'http://ch.linkedin.com/pub/jean-jacques-schwaab/25/110/5a1'}}
+%>
+
+<% @team.each do |key, member| %>
+  <article id="<%= key %>">
+    <h3>Curriculum vitae <span class="name"><%= member[:name] %></span></h3>
+    <div class="icon_media">
+      <% if member[:linkin] != nil %>
+        <a href="<%= member[:linkin] %>"><span class="icon linkin"></span></a>
+      <% end %>
+      <% if member[:twitter] != nil %>
+        <a href="<%= member[:linkin] %>"><span class="icon twitter"></span></a>
+      <% end %>
+    </div>
+    <nav class="nav_lightbox">
+      <ul>
+        <li class="formation"><div><span class="icon icon-book"></span><a href="#" data-menu-item="formation">Formation</a></div></li>
+        <li class="experience"><div><span class="icon icon-lock"></span><a href="#" data-menu-item="experience">Expériences</a></div></li>
+        <li class="activity"><div><span class="icon icon-comment"></span><a href="#" data-menu-item="activity">Autres activités</a></div></li>
+        <% if File.exists?(Rails.root.join('app', 'views', 'page', "_#{key}_life.html.erb")) %>
+          <li class="life"><div><span class="icon icon-user"></span><a href="#" data-menu-item="life">Vie associative</a></div></li>
+        <% end %>
+        <% if File.exists?(Rails.root.join('app', 'views', 'page', "_#{key}_publish.html.erb")) %>
+          <li class="publish"><div><span class="icon icon-pencil"></span><a href="#" data-menu-item="publish">Publication</a></div></li>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="container formation">
+      <%= render partial: "#{key}_formation" %>
+    </div>
+    <div class="container experience">
+      <%= render partial: "#{key}_experience" %>
+    </div>
+    <div class="container activity">
+      <%= render partial: "#{key}_activity" %>
+    </div>
+    <div class="container life">
+      <%= render partial: "#{key}_life" rescue nil %>
+    </div>
+    <div class="container publish">
+      <%= render partial: "#{key}_publish" rescue nil %>
+    </div>
+  </article>
+<% end %>

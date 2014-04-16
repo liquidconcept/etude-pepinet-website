@@ -1,0 +1,42 @@
+section.content {
+  width: 700px;
+  @include pie-clearfix;
+
+  #cover_book {
+    width: 270px;
+    margin-right: 40px;
+    float: left;
+
+    img {
+      border: solid 1px #5D0063;
+    }
+  }
+
+  #description_book {
+    width: 390px;
+    float: right;
+
+    p {
+      span {
+        font-style: italic;
+      }
+    }
+
+    a {
+      color: $font_color_active;
+    }
+
+    a#btn-command {
+      display: block;
+      width: 227px;
+      margin-top: 40px;
+      padding: 15px 15px;
+      color: #FFF;
+      font-size: 1.5em;
+      background-color: #00A265;
+      text-decoration: none;
+      text-transform: uppercase;
+      @include box-shadow($font_color_footer -1px -1px 1px 0 inset);
+    }
+  }
+}

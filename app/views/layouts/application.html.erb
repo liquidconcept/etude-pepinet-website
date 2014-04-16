@@ -14,10 +14,15 @@
       <h1><%= link_to('Étude Pépinet 4 - Avocats', root_path) %></h1>
       <nav>
         <ul>
+          
           <li><%= link_to_with_active('accueil',                '/'            ) %></li>
           <li><%= link_to_with_active('étude',                  '/etude'       ) %></li>
           <li><%= link_to_with_active('équipe',                 '/equipe'      ) %></li>
-          <li><%= link_to_with_active('domaines de compétence', '/competences' ) %></li>
+          <li><%= link_to_with_active('Compétences',             '/competences' ) %></li>
+          <li class="on">
+            <a href="/livres" id="link_label"><i class="label">nouveau</i></a>
+            <%= link_to_with_active('livre',   '/livres'          ) %>
+          </li>
           <li><%= link_to_with_active('tarifs',                 '/tarifs'      ) %></li>
           <li><%= link_to_with_active('actualités',             '/actualites'  ) %></li>
           <li><%= link_to_with_active('ressources',             '/ressources'  ) %></li>

@@ -1,3 +1,20 @@
+header#book {
+  #confirmable {
+    display: none;
+    margin-top: 20px;
+    padding: 10px 10px;
+    color: #FFF;
+    background-color: #00A265;
+    @include border-radius(8px, 8px);
+    @include opacity(0.7);
+
+    .close {
+      cursor: pointer;
+      float: right;
+    }
+  }
+}
+
 section.content {
   width: 700px;
   @include pie-clearfix;

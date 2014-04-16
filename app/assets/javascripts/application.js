@@ -47,7 +47,6 @@ var fixSize = function() {
 var enableScrollbar = function() {
   var content = $('#main > section');
 
-  console.log(content);
   if (content.length > 0) {
     content.css({ height: content.parent().height() - content.position().top - parseInt(content.css('margin-top')) - parseInt(content.css('padding-top')) });
     content.scrollbar();
@@ -190,6 +189,15 @@ var clickWithPjax = function(event) {
 
 // initialization
 $(function() {
+  // catch redirect URL from paypal
+  if (window.location.hash) {
+    $('#confirmable').show();
+  }
+
+  $('#confirmable > span.close').on('click', function() {
+    $('#confirmable').fadeOut(1000);
+  });
+
   // Overlay is set on front of background until is loaded
   $('#overlay').addClass('on-load');
 

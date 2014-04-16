@@ -28,6 +28,7 @@ end
 # Development environment dependencies (also needed by test environement)
 group :development, :test do
   gem 'sqlite3'
+  gem 'debugger'
 
   gem 'rspec-rails'
   gem 'spork', '~> 0.9.0.rc'
@@ -36,7 +37,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
 
-  gem 'ruby-debug19', require: 'ruby-debug'
   gem 'pry'
   gem 'pry-remote'
   gem 'hirb-unicode'

@@ -50,6 +50,7 @@ EtudePepinet::Application.configure do
 
   # Default host for urls in Action::Mailer
   config.action_mailer.default_url_options = { host: 'www.avopep.ch' }
+  config.action_mailer.delivery_method = :sendmail
 
   # Enable threaded mode
   # config.threadsafe!

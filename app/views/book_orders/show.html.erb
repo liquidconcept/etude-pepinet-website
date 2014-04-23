@@ -17,15 +17,20 @@
   <div id="purchase_form">
     <p>65 CHF<br/>+ frais de port (jusqu'au 15 mai 2014)</p>
     <p>80 CHF<br/>+ frais de port (dès le 15 mai 2014)</p>
-    <form>
-      <input placeholder="Quantité"></input>
-      <input placeholder="Prénom Nom"></input>
-      <input placeholder="Adresse"></input>
-      <input placeholder="Code postal"></input>
-      <input placeholder="Ville"></input>
-      <input placeholder="Email"></input>
-      <input placeholder="Téléphone"></input>
-    </form>
-    <a href="#" id="btn-command" target="_blank">commander le livre</a>
+    <% if !@book_order.nil? %>
+      <%= form_for @book_order, as: :book_order, url: { controller: 'book_orders', action: 'create' } do |f| %>
+        <%= f.text_field :quantity, placeholder: 'Quantité', value: @book_order.quantity %>
+        <%= f.text_field :name, placeholder: 'Prénom Nom', value: @book_order.name %>
+        <%= f.text_field :address, placeholder: 'Adresse', value: @book_order.address %>
+        <%= f.text_field :zip, placeholder: 'Code postal', value: @book_order.zip %>
+        <%= f.text_field :city, placeholder: 'Ville', value: @book_order.city %>
+        <%= f.text_field :email, placeholder: 'Email', value: @book_order.email %>
+        <%= f.text_field :phone, placeholder: 'Téléphone', value: @book_order.phone %>
+
+        <%= f.submit 'commander le livre', class: 'btn-command' %>
+      <% end %>
+    <% else %>
+      <p class="success">Votre commande a bien été envoyée</p>
+    <% end %>
   </div>
 </section>

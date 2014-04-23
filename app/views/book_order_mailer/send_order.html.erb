@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>Commande de livre - Message posté depuis le site </h3>
+    <p>Quantité de livres : <%= @book_order.quantity %></p>
+    <p>Nom : <%= @book_order.name %></p>
+    <p>Adresse : <%= @book_order.address %></p>
+    <p>Code postal : <%= @book_order.zip %>
+    <p>Ville : <%= @book_order.city %></p>
+    <p>Email : <%= @book_order.email %></p>
+    <p>Téléphone : <%= @book_order.phone %></p><br />
+    <p>Adresse postale compléte :</p>
+    <blockquote>
+    <p><%= @book_order.name %><br />
+    <%= @book_order.address %><br />
+    <%= @book_order.zip %> <%= @book_order.city %></p>
+    </blockquote>
+  </body>
+</html>

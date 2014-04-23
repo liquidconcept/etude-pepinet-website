@@ -1,4 +1,5 @@
 header#book {
+
   #confirmable {
     display: none;
     margin-top: 20px;
@@ -20,6 +21,7 @@ header#book {
 
   .commande_title {
     margin-left: 548px;
+    margin-bottom: 20px;
   }
 }
 
@@ -68,12 +70,12 @@ section.content {
       margin-top: 15px;
     }
 
-    a#btn-command {
+    input.btn-command {
       font-weight: bold;
-      font-size: 14px;
+      font-size: 12px;
       display: inline-block;
-      width: 187px;
-      height: 15px;
+      width: 217px;
+      height: 45px;
       margin-left: 16px;
       margin-top: 25px;
       padding: 15px 15px;
@@ -82,6 +84,7 @@ section.content {
       text-decoration: none;
       text-align: center;
       text-transform: uppercase;
+      border: none;
       @include box-shadow($font_color_footer -1px -1px 1px 0 inset);
     }
 
@@ -92,12 +95,25 @@ section.content {
       margin-left: 16px;
     }
 
+    p.success {
+      margin-top: 30px;
+      font-size: 15px;
+      text-align: center;
+    }
+
     input {
       width: 209px;
       height: 25px;
       margin-top: 6px;
       margin-left: 16px;
       font-size: 16px;
+    }
+
+    .field_with_errors {
+      input {
+        background-color: #FFDFDF;
+        border: 1px solid #FF0000;
+      }
     }
   }
 }

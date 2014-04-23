@@ -96,6 +96,7 @@ body, body > div.wrapper {
     display: block;
     position: relative;
     height: 680px;
+    overflow: visible;
 
     &> header, &> section {
       display: block;

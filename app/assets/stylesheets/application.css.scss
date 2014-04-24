@@ -451,45 +451,52 @@ body > .overlay {
 
 .book_presentation {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 395px;
-  height: 160px;
+  top: -16px;
+  left: 185px;
+  width: 650px;
+  padding: 8px;
   background-image: url(/assets/background-light-opacity.png);
 
   #cover_book_small {
-    width: 98px;
-    margin-right: 35px;
     float: left;
+    height: 78px;
 
     img {
       border: solid 1px #5D0063;
-      width: 95px;
-      margin-top: 8px;
-      margin-left: 10px;
+      width: 51px;
     }
   }
 
-  h3 {
-    font-size: 20px;
-    padding-top: 8px;
-    margin-bottom: 8px;
+  #book_text {
+    float: left;
+    width: 345px;
+    height: 78px;
+    margin-left: 20px;
+
+    h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
   }
 
-  a#btn-command {
-    font-weight: bold;
-    font-size: 14px;
-    display: inline-block;
-    width: 187px;
-    height: 15px;
-    margin-top: 15px;
-    padding: 15px 15px;
-    color: #FFF;
-    background-color: #00A265;
-    text-decoration: none;
-    text-align: center;
-    text-transform: uppercase;
-    @include box-shadow($font_color_footer -1px -1px 1px 0 inset);
+  #book_button {
+    float: right;
+
+    a#btn-command {
+      font-weight: bold;
+      font-size: 14px;
+      display: inline-block;
+      width: 187px;
+      height: 15px;
+      margin-top: 15px;
+      padding: 15px 15px;
+      color: #FFF;
+      background-color: #00A265;
+      text-decoration: none;
+      text-align: center;
+      text-transform: uppercase;
+      @include box-shadow($font_color_footer -1px -1px 1px 0 inset);
+    }
   }
 }
 

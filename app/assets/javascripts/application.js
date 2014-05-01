@@ -9,6 +9,7 @@
 //= require jquery_ujs
 //= require jquery.pjax
 //= require jquery.scroll
+//= require jquery.placeholder
 //= require underscore
 //= require lightbox
 

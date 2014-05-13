@@ -2,6 +2,6 @@
 
 class AnnexeBooksController < ApplicationController
   def index
-    @annexe = AnnexeBooks.all
+    @annexes = AnnexeBooks.all
   end
 end

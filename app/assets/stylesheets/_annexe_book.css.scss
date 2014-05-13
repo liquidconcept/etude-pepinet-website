@@ -1,0 +1,37 @@
+.content_annexe {
+  width: 800px;
+
+  .annexe {
+    @include pie-clearfix;
+    position: relative;
+    margin: 30px 0px;
+
+    .text {
+      width: 600px;
+      margin-right: 10px;
+      float: left;
+
+      h2 {
+        font-size: 1.8em;
+        line-height: 30px;
+      }
+
+      .category {
+        font-style: italic;
+        color: $font_color_active;
+      }
+    }
+
+    .sidebar {
+      width: 180px;
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+
+      img {
+        margin-left: 60px;
+        padding-bottom: 30px;
+      }
+    }
+  }
+}

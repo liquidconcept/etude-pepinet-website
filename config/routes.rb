@@ -6,6 +6,8 @@ EtudePepinet::Application.routes.draw do
 
   resources :news, path: '/actualites'
 
+  resources :annexe_books, path: '/annexe'
+
   resource :book_orders, path: '/livres', only: [:show, :create]
 
   match ':page' => 'page#show'

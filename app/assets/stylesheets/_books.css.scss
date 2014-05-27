@@ -56,6 +56,10 @@ section.content {
       border: none;
       @include box-shadow($font_color_footer -1px -1px 1px 0 inset);
     }
+
+    .update {
+      margin-top: 15px;
+    }
   }
 
   #description_book {

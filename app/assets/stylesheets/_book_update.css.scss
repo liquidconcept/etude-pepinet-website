@@ -1,11 +1,11 @@
-.content_annexe {
+.update_books {
   width: 800px;
 
   .scrollbar-pane {
     width: 785px;
   }
 
-  .annexe {
+  .updates {
     width: 765px;
     @include pie-clearfix;
     position: relative;
@@ -23,7 +23,7 @@
         line-height: 30px;
       }
 
-      .category {
+      .created_at {
         font-style: italic;
         color: $font_color_active;
       }
@@ -32,11 +32,18 @@
     .sidebar {
       width: 180px;
       position: absolute;
-      top: 0px;
+      top: 30px;
       right: 0px;
 
+      .chapter {
+        font-size: 1.5em;
+        color: $font_color_active;
+        margin-bottom: 20px;
+        text-align: right;
+      }
+
       img {
-        margin-left: 60px;
+        margin-left: 100px;
         padding-bottom: 30px;
       }
     }

@@ -1,13 +1,20 @@
 .content_annexe {
   width: 800px;
 
+  .scrollbar-pane {
+    width: 785px;
+  }
+
   .annexe {
+    width: 765px;
     @include pie-clearfix;
     position: relative;
     margin: 30px 0px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid grey;
 
     .text {
-      width: 600px;
+      width: 580px;
       margin-right: 10px;
       float: left;
 

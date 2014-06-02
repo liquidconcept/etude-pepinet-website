@@ -1,20 +1,27 @@
-<header id="annexe">
+<header id="annexe" style="width: 770px;">
   <h2>Mises à jour: Divorcer, un guide juridique</h2>
+  <div id="nav-order">
+    <span>trié par :</span>
+    <a href="./book_update?sort=chapter" class="chapter active">chapitre</a> |
+    <a href="./book_update?sort=date" class="date">date</a>
+  </div>
 </header>
 <section class="update_books">
-  <% @book_updates.each do |book| %>
-    <div class="updates">
-      <div class="text">
-        <h2><%= book.title %></h2>
-        <p class="created_at"><%= book.created_at.strftime('%d.%m.%Y') %></p>
-        <p><%= book.content %></p>
+  <div id="order_by_chapter">
+    <% @book_updates.each do |book| %>
+      <div class="updates">
+        <div class="text">
+          <h2><%= book.title %></h2>
+          <p class="created_at"><%= book.created_at.strftime('%d.%m.%Y') %></p>
+          <p><%= book.content %></p>
+        </div>
+        <div class="sidebar">
+          <p class="chapter"><%= book.chapter %><%= book.alinea.present? ? ', ' + book.alinea : nil %></p>
+          <% if book.file.present? %>
+            <a href="<%= book.file %>" target="_blank"><%= image_tag 'download.png' %></a>
+          <% end %>
+        </div>
       </div>
-      <div class="sidebar">
-        <p class="chapter"><%= book.chapter %>, <%= book.alinea %></p>
-        <% if book.file.present? %>
-          <a href="<%= book.file %>" target="_blank"><%= image_tag 'download.png' %></a>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </section>

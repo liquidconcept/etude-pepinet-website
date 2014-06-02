@@ -5,6 +5,11 @@ class BookUpdatesController < ApplicationController
   before_filter :protected_page
 
   def index
-    @book_updates = BookUpdates.all.sort {|a, b| latin_to_integer(a.chapter) <=> latin_to_integer(b.chapter)}
+    @sort = (params[:sort] && params[:sort].to_sym) || :chapter
+    @book_updates = BookUpdates.order('created_at').all
+
+    if @sort == :chapter
+     @book_updates.sort! {|a, b| latin_to_integer(a.chapter) <=> latin_to_integer(b.chapter)}
+    end
   end
 end

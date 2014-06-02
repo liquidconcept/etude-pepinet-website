@@ -116,6 +116,24 @@ body, body > div.wrapper {
         text-transform: uppercase;
         font-weight: normal;
       }
+
+      #nav-order {
+        float: right;
+
+        a {
+          color: #4f4f4f;
+          text-decoration: none;
+        }
+
+        a.active {
+          color: $font_color_active;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &> header {
+      width: 770px;
     }
 
     &> section {

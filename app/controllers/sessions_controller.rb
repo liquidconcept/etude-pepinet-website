@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    if params[:password] == '123456'
+    if params[:password] == 'pepinet4divorce'
       session[:logged] = true
       redirect_to book_updates_path
     else

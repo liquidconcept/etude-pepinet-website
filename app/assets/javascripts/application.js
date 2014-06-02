@@ -152,6 +152,7 @@ var clickWithPjax = function(event) {
   // get link href
   var href = $(this).attr('href');
 
+
   // don't load link if it is current page
   if (window.location.href === href) { return false; }
 
@@ -181,9 +182,21 @@ var clickWithPjax = function(event) {
           $('html').removeClass('homepage'); // not on homepage
           showRandomTeamMember(); // only occure on team page
           enableScrollbar(); // re-initialize scrollbar on main content
+          activeNavOrder();
         }
       });
     });
+  }
+}
+
+var activeNavOrder = function() {
+  // Manage active link for book update nav order
+  if (window.location.search.split('=')[1] === "date") {
+    $('#nav-order a.active').removeClass('active');
+    $('#nav-order a.date').addClass('active');
+  } else {
+    $('#nav-order a.active').removeClass('active');
+    $('#nav-order a.chapter').addClass('active');
   }
 }
 
@@ -215,6 +228,8 @@ $(function() {
     $('#main').on('click', '.news h3 a', clickWithPjax);
     $('#main > .book_presentation > #book_button > #btn-command').live('click', clickWithPjax);
     $('#main #cover_book > a').live('click', clickWithPjax);
+    $('#cover_book a.update').live('click', clickWithPjax);
+    $('#nav-order a').live('click', clickWithPjax);
 
     // Initialize team member switcher
     $('#main').on('click', '.team button', switchTeamMember);

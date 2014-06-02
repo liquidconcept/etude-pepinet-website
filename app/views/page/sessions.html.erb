@@ -1,6 +1,6 @@
 <div class="login">
   <h3>Authentification requise</h3>
-  <p>Pour accéder aux mises à jour, vous devez ajouter vous connecter grâce au mot de passe présent dans votre livre.</p>
+  <p>Pour accéder aux mises à jour, vous devez vous connecter grâce au mot de passe présent dans votre livre.</p>
   <%= form_tag do %>
     <%= password_field_tag :password, params[:password], :placeholder => 'Mot de passe' %>
     <%= submit_tag "se connecter" %>

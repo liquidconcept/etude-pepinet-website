@@ -7,6 +7,7 @@ gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre'
 
 gem 'airbrake'
+gem 'carrierwave'
 
 # Production environment dependencies
 group :production, :staging do

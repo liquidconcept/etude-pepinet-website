@@ -215,6 +215,7 @@ $(function() {
     $('body > header a, body > footer a').on('click', clickWithPjax);
     $('#main').on('click', '.news h3 a', clickWithPjax);
     $('#main > .book_presentation > #book_button > #btn-command').live('click', clickWithPjax);
+    $('#main #cover_book > a').live('click', clickWithPjax);
 
     // Initialize team member switcher
     $('#main').on('click', '.team button', switchTeamMember);

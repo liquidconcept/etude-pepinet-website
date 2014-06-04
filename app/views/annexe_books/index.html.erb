@@ -1,0 +1,22 @@
+<header id="annexe">
+  <h2>Annexes: Divorcer, un guide juridique</h2>
+</header>
+<section class="content_annexe">
+  <% @annexes.each do |annexe| %>
+    <div class="annexe">
+      <div class="text">
+        <h2><%= annexe.title %></h2>
+        <p class="category"><%= annexe.category %></p>
+        <p><%= annexe.content %></p>
+      </div>
+      <div class="sidebar">
+        <% if annexe.file.present? %>
+          <a href="<%= annexe.file %>" target="_blank"><%= image_tag 'download.png' %></a>
+        <% else %>
+          <a href="<%= ensure_links_contain_scheme(annexe.link) %>" target="_blank"><%= image_tag 'link.png' %></a>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</section>
+

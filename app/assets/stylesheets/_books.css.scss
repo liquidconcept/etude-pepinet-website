@@ -39,6 +39,23 @@ section.content {
       width: 209px;
       border: solid 1px #5D0063;
     }
+
+    .btn-command-annexe {
+      font-weight: bold;
+      font-size: 12px;
+      display: inline-block;
+      width: 180px;
+      height: 15px;
+      margin-top: 25px;
+      padding: 15px 15px;
+      color: #FFF;
+      background-color: #203D9B;
+      text-decoration: none;
+      text-align: center;
+      text-transform: uppercase;
+      border: none;
+      @include box-shadow($font_color_footer -1px -1px 1px 0 inset);
+    }
   }
 
   #description_book {

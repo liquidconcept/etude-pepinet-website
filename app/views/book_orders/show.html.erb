@@ -6,7 +6,8 @@
 <section class="content">
   <div id="cover_book">
     <%= image_tag 'cover_book.png' %>
-    <a href="<%= annexe_books_path %>" class="btn-command-annexe">Annexes</a>
+    <%= link_to 'Mises à jour du livre', annexe_books_path, class: 'btn-command-annexe' %>
+    <%= link_to 'Mises à jour du livre', book_updates_path, class: 'btn-command-annexe update' %>
   </div>
   <div id="description_book">
     <h3>Divorcer, un guide juridique</h3>

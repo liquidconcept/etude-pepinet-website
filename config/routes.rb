@@ -6,7 +6,11 @@ EtudePepinet::Application.routes.draw do
 
   resources :news, path: '/actualites'
 
-  resources :annexe_books, path: '/annexe'
+  resources :annexe_books, path: '/annexe', only: 'index'
+
+  resources :sessions, only: 'create'
+
+  resources :book_updates, path: '/book_update', only: 'index'
 
   resource :book_orders, path: '/livres', only: [:show, :create]
 

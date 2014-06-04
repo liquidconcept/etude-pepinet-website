@@ -6,4 +6,11 @@ class ApplicationController < ActionController::Base
   before_filter do
     I18n.locale = :fr
   end
+
+  private
+  def protected_page
+    if !session[:logged]
+      redirect_to sessions_path
+    end
+  end
 end

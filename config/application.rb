@@ -29,6 +29,9 @@ module EtudePepinet
       g.fixture_replacement :factory_girl, :dir => 'spec/factories'
     end
 
+    # Load folder lib
+    config.autoload_paths += %W(#{config.root}/lib)
+
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 

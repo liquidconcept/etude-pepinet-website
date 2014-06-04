@@ -21,6 +21,7 @@
 
 # Ignore compiled assets
 /public/assets/*
+/public/uploads/*
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
